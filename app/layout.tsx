@@ -17,9 +17,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body>
                 <Providers>
-                    <Header />
-                    {children}
-                    <Footer />
+                    <div className="bg-primary">
+                        <Header />
+                        {children}
+                        <Footer />
+                    </div>
                 </Providers>
             </body>
         </html>

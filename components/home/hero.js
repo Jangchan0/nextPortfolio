@@ -19,8 +19,10 @@ function Hero() {
                     똩넘뱀 쩻가뫼타를, 퀀드아준 막래봘흣의 온요작.
                 </p>
                 <div className="flex justify-center">
-                    <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                        <Link href="/projects_">프로젝트 보러가기</Link>
+                    <button>
+                        <Link href="/projects_" className="btn-project">
+                            프로젝트 보러가기
+                        </Link>
                     </button>
                 </div>
             </div>
