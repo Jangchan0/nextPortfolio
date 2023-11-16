@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -6,9 +7,12 @@ export default function Footer() {
             <footer class="text-gray-600 body-font">
                 <div class="bg-gray-100">
                     <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-                        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                        <Link
+                            href="/"
+                            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+                        >
                             <span class="ml-3 text-xl">장찬영 포트폴리오</span>
-                        </a>
+                        </Link>
                         <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
                             © 2020 Tailblocks —
                             <a

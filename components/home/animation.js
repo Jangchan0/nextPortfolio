@@ -1,6 +1,6 @@
 'use client';
 import Lottie from 'lottie-react';
-import lottieDeveloper from '/public/lottieDeveloper.json';
+import lottieDeveloper from '/public/lottieDeveloper2.json';
 
 export default function Animation() {
     return (
