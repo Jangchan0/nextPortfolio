@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Header() {
     return (
@@ -20,9 +21,19 @@ export default function Header() {
                     <span className="ml-3 text-xl">장찬영 포트폴리오</span>
                 </a>
                 <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                    <a className="mr-5 hover:text-gray-900">홈</a>
-                    <a className="mr-5 hover:text-gray-900">프로젝트</a>
-                    <a className="mr-5 hover:text-gray-900">연락하기</a>
+                    <Link href="/" className="mr-5 hover:text-gray-900">
+                        홈
+                    </Link>
+                    <Link href="/projects_" className="mr-5 hover:text-gray-900">
+                        프로젝트
+                    </Link>
+
+                    <Link
+                        href="https://open.kakao.com/o/sW0dhISf"
+                        className="mr-5 hover:text-gray-900"
+                    >
+                        연락하기
+                    </Link>
                 </nav>
                 <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
                     Button

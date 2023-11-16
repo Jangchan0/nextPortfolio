@@ -23,9 +23,7 @@ function Hero() {
                     </button>
                 </div>
             </div>
-            <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <Animation />
-            </div>
+            <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">{/* <Animation /> */}</div>
         </>
     );
 }
