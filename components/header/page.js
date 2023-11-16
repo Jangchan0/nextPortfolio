@@ -27,7 +27,6 @@ export default function Header() {
                     <Link href="/projects_" className="mr-5 hover:text-gray-900">
                         프로젝트
                     </Link>
-
                     <Link
                         href="https://open.kakao.com/o/sW0dhISf"
                         className="mr-5 hover:text-gray-900"

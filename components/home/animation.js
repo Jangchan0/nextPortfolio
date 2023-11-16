@@ -1,10 +1,15 @@
 'use client';
-import React from 'react';
-
-import Lottie from 'react-lottie-player';
-// Alternatively:
-// import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
+import Lottie from 'lottie-react';
+import lottieDeveloper from '/public/lottieDeveloper.json';
 
 export default function Animation() {
-    return <Lottie loop animationData={Lottie} play style={{ width: 150, height: 150 }} />;
+    return (
+        <div className="flex flex-col w-full justify-center items-center">
+            <Lottie
+                animationData={lottieDeveloper}
+                className="flex justify-center items-center"
+                loop={true}
+            />
+        </div>
+    );
 }
