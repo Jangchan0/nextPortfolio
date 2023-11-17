@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function Footer() {
     return (
         <>
-            <footer class="text-gray-600 body-font">
-                <div class="bg-gray-100">
+            <footer class="body-font">
+                <div>
                     <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
                         <Link
                             href="/"
