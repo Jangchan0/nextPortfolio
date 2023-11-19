@@ -7,35 +7,20 @@ const Projects = () => {
 export default Projects;
 
 export async function getStaticProps() {
-    (async () => {
-        const databaseId = 'd9824bdc-8445-4327-be8b-5b47500af6ce';
-        const response = await notion.databases.query({
-            database_id: databaseId,
-            filter: {
-                or: [
-                    {
-                        property: 'In stock',
-                        checkbox: {
-                            equals: true,
-                        },
-                    },
-                    {
-                        property: 'Cost of next trip',
-                        number: {
-                            greater_than_or_equal_to: 2,
-                        },
-                    },
-                ],
-            },
-            sorts: [
-                {
-                    property: 'Last ordered',
-                    direction: 'ascending',
-                },
-            ],
-        });
-        console.log(response);
-    })();
+    const options = {
+        method: 'POST',
+        headers: {
+            accept: 'application/json',
+            'Notion-Version': '2022-06-28',
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({ filter: 'string', start_cursor: 'string', page_size: 100 }),
+    };
+
+    fetch('https://api.notion.com/v1/databases/database_id/query', options)
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err));
 
     return {
         props: {},
