@@ -1,9 +1,43 @@
-import React from 'react'
+import React from 'react';
 
 const Projects = () => {
-  return (
-    <h1>프로젝트</h1>
-  )
-}
+    return <h1>프로젝트</h1>;
+};
 
-export default Projects
+export default Projects;
+
+export async function getStaticProps() {
+    (async () => {
+        const databaseId = 'd9824bdc-8445-4327-be8b-5b47500af6ce';
+        const response = await notion.databases.query({
+            database_id: databaseId,
+            filter: {
+                or: [
+                    {
+                        property: 'In stock',
+                        checkbox: {
+                            equals: true,
+                        },
+                    },
+                    {
+                        property: 'Cost of next trip',
+                        number: {
+                            greater_than_or_equal_to: 2,
+                        },
+                    },
+                ],
+            },
+            sorts: [
+                {
+                    property: 'Last ordered',
+                    direction: 'ascending',
+                },
+            ],
+        });
+        console.log(response);
+    })();
+
+    return {
+        props: {},
+    };
+}
