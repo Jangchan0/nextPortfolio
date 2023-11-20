@@ -4,16 +4,24 @@ import ProjectItem from '../../components/projects/project-item';
 export default async function Projects() {
     const data = await getData();
 
+    const projectSortByDate = data.results.sort((a, b) => {
+        const fast = new Date(a.properties[`진행 기간`].date.start);
+        const late = new Date(b.properties[`진행 기간`].date.start);
+
+        if (fast < late) {
+            return 1;
+        }
+        if (fast > late) {
+            return -1;
+        }
+        return 0;
+    });
+
     return (
         <>
             <h1>총 프로젝트 : {data.length}</h1>
-
-            {data.results.map((aProject) => {
-                return (
-                    <>
-                        <ProjectItem key={aProject.id} data={aProject} />
-                    </>
-                );
+            {projectSortByDate.map((aProject) => {
+                return <ProjectItem key={aProject.id} data={aProject} />;
             })}
         </>
     );
