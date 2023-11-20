@@ -1,9 +1,22 @@
 import { TOKEN, DATABASE_ID } from '../../config/index';
+import ProjectItem from '../../components/projects/project-item';
 
 export default async function Projects() {
     const data = await getData();
 
-    return <h1>프로젝트</h1>;
+    return (
+        <>
+            <h1>총 프로젝트 : {data.length}</h1>
+
+            {data.results.map((aProject) => {
+                return (
+                    <>
+                        <ProjectItem key={aProject.id} data={aProject} />
+                    </>
+                );
+            })}
+        </>
+    );
 }
 
 // NextJs 12 버전까지 지원함 (getStaticProps)
@@ -44,7 +57,9 @@ async function getData() {
             'content-type': 'application/json',
             authorization: `Bearer ${TOKEN}`,
         },
-        body: JSON.stringify({ page_size: 100 }),
+        body: JSON.stringify({
+            page_size: 100,
+        }),
     };
 
     const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options);
@@ -59,5 +74,5 @@ async function getData() {
         throw new Error('Failed to fetch data');
     }
 
-    return projectsName;
+    return projects;
 }
