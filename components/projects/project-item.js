@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function ProjectItem(data) {
     const title = data.data.properties.이름.title[0]?.text.content;
     const progressPeriod = `${data.data.properties[`진행 기간`].date.start} ~ ${
@@ -6,14 +8,19 @@ export default function ProjectItem(data) {
     const discriptionList = data.data.properties[`한 줄 소개`].rich_text;
     const githubLink = data.data.properties.Github.url;
     const skillList = data.data.properties.Skills.multi_select;
+    const imgSrc = data.data.cover;
 
     const discription = discriptionList.map((item) => item.plain_text);
     const skill = skillList.map((item) => item.name);
 
-    console.log(discription);
+    // console.log(imgSrc);
 
     return (
         <div className="flex flex-col p-6 bg-slate-700 rounded-md">
+            <Image
+            // src={}
+            />
+
             <h1>{title}</h1>
             <p>{skill}</p>
             <h3>{discription}</h3>
