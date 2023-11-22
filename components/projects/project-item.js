@@ -8,17 +8,22 @@ export default function ProjectItem(data) {
     const discriptionList = data.data.properties[`한 줄 소개`].rich_text;
     const githubLink = data.data.properties.Github.url;
     const skillList = data.data.properties.Skills.multi_select;
-    const imgSrc = data.data.cover;
+    const imgSrc = data.data.cover.file.url;
 
     const discription = discriptionList.map((item) => item.plain_text);
     const skill = skillList.map((item) => item.name);
 
-    // console.log(imgSrc);
-
     return (
-        <div className="flex flex-col p-6 bg-slate-700 rounded-md">
+        <div className="flex flex-col m-3 bg-slate-700 rounded-xl">
             <Image
-            // src={}
+                className="rounded-t-xl"
+                src={imgSrc}
+                alt="cover image"
+                width={500}
+                height={500}
+                layout="responsive"
+                objectFit="contain"
+                quality={100}
             />
 
             <h1>{title}</h1>

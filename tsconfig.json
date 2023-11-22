@@ -23,6 +23,15 @@
         },
         "forceConsistentCasingInFileNames": true
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/_app.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "app/_app.js",
+        "app/projects_/page.js",
+        "app/projects_/page.js",
+        "components/projects/project-item.js"
+    ],
     "exclude": ["node_modules"]
 }

@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body>
                 <Providers>
-                    <div className="bg-primary">
+                    <div className="bg-primary flex flex-col item-center justify-center">
                         <Header />
                         {children}
                         <Footer />
