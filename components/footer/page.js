@@ -14,17 +14,17 @@ export default function Footer() {
                             <span class="ml-3 text-xl">장찬영 포트폴리오</span>
                         </Link>
                         <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
-                            © 2020 Tailblocks —
+                            © 2023 Frontend —
                             <a
-                                href="https://twitter.com/knyttneve"
+                                href="https://github.com/Jangchan0"
                                 rel="noopener noreferrer"
                                 class="text-gray-600 ml-1"
                                 target="_blank"
                             >
-                                @knyttneve
+                                @JangChanYoung
                             </a>
                         </p>
-                        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                        {/* <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                             <a class="text-gray-500">
                                 <svg
                                     fill="currentColor"
@@ -80,7 +80,7 @@ export default function Footer() {
                                     <circle cx="4" cy="4" r="2" stroke="none"></circle>
                                 </svg>
                             </a>
-                        </span>
+                        </span> */}
                     </div>
                 </div>
             </footer>
