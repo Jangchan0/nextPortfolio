@@ -15,7 +15,7 @@ export default function ProjectItem(data) {
     const discription = discriptionList.map((item) => item.plain_text);
 
     return (
-        <div className="project-card  w-[35vw] min-w-[340px] ">
+        <div className="project-card  w-[35vw] min-w-[340px]  ">
             <Link href={notionDetail}>
                 <Image
                     className="rounded-t-xl "
