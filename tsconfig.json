@@ -31,7 +31,7 @@
         "app/_app.js",
         "app/projects_/page.js",
         "app/projects_/page.js",
-        "components/projects/project-item.js"
+        "components/projects/project-item.tsx"
     ],
     "exclude": ["node_modules"]
 }

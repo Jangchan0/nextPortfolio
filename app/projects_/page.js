@@ -56,8 +56,6 @@ export default async function Projects() {
 //         return aProject.properties.이름.title[0]?.text.content;
 //     });
 
-//     // console.log(`project : ${projectsName}`);
-
 //     return {
 //         props: { projectsName },
 //         revalidate: 1, // 데이터 변경이 있으면 갱신 1초 마다 - 갱신 주기 설정 가능
