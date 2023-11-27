@@ -23,7 +23,7 @@ function DarkModeToggleBtn() {
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
         }
-    }, []);
+    }, [theme]);
 
     const buttonClick = () => {
         toggleDarkMode();
