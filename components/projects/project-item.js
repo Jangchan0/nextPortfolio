@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ProjectItem(data) {
@@ -21,8 +21,8 @@ export default function ProjectItem(data) {
                     className="rounded-t-xl "
                     src={imgSrc}
                     alt="cover image"
-                    width="100%"
-                    height="50%"
+                    width={500}
+                    height={300}
                     layout="responsive"
                     objectFit="cover"
                     quality={100}
