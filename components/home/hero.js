@@ -8,16 +8,17 @@ function Hero() {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const bar = '⎢';
-    const toRotate = '주니어 프론트엔드 개발자 장찬영입니다';
+    const toRotate = '주니어 프론트엔드 개발자 장찬영입니다.';
+    const [isTypingFin, setIsTypingFin] = useState(false);
     const [tinkleState, setTinkleState] = useState(true);
 
     const tinkle = () => {
-        isDeleting ? setTinkleState(!tinkleState) : setTinkleState(true);
+        isTypingFin ? setTinkleState(!tinkleState) : setTinkleState(true);
     };
-    setTimeout(tinkle, 600, tinkleState);
+    setTimeout(tinkle, 700, tinkleState);
 
     const [text, setText] = useState('');
-    const [delta, setDelta] = useState(300 - Math.random() * 100);
+    const [delta, setDelta] = useState(200 - Math.random() * 100);
     const period = 2000;
 
     useEffect(() => {
@@ -36,6 +37,13 @@ function Hero() {
 
         setText(updateText);
 
+        if (updateText.length === toRotate.length) {
+            setIsTypingFin(true);
+            tinkle;
+        } else {
+            setIsTypingFin(false);
+        }
+
         if (isDeleting) {
             setDelta((prevDelta) => prevDelta / 2);
         }
@@ -45,7 +53,7 @@ function Hero() {
         } else if (isDeleting && updateText === '') {
             setIsDeleting(false);
             setLoopNum(loopNum + 1);
-            setDelta(300 - Math.random() * 100);
+            setDelta(200 - Math.random() * 100);
         }
     };
 
