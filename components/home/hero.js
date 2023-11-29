@@ -1,61 +1,9 @@
-'use client';
-import { useState, useEffect } from 'react';
-
 import Animation from './animation';
 import Link from 'next/link';
+import TypingAnimation from './TypingAnimation';
 
 function Hero() {
-    const [loopNum, setLoopNum] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const bar = '⎢';
-    const toRotate = '주니어 프론트엔드 개발자 장찬영입니다.';
-    const [isTypingFin, setIsTypingFin] = useState(false);
-    const [tinkleState, setTinkleState] = useState(true);
-
-    const tinkle = () => {
-        isTypingFin ? setTinkleState(!tinkleState) : setTinkleState(true);
-    };
-    setTimeout(tinkle, 700, tinkleState);
-
-    const [text, setText] = useState('');
-    const [delta, setDelta] = useState(200 - Math.random() * 100);
-    const period = 2000;
-
-    useEffect(() => {
-        let ticker = setInterval(() => {
-            tick();
-        }, delta);
-
-        return () => {
-            clearInterval(ticker);
-        };
-    }, [text]);
-
-    const tick = () => {
-        let fullText = toRotate;
-        let updateText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-
-        setText(updateText);
-
-        if (updateText.length === toRotate.length) {
-            setIsTypingFin(true);
-            tinkle;
-        } else {
-            setIsTypingFin(false);
-        }
-
-        if (isDeleting) {
-            setDelta((prevDelta) => prevDelta / 2);
-        }
-        if (!isDeleting && updateText === fullText) {
-            setIsDeleting(true);
-            setDelta(period);
-        } else if (isDeleting && updateText === '') {
-            setIsDeleting(false);
-            setLoopNum(loopNum + 1);
-            setDelta(200 - Math.random() * 100);
-        }
-    };
+    const typingText = '주니어 프론트엔드 개발자 장찬영입니다.';
 
     return (
         <>
@@ -63,10 +11,7 @@ function Hero() {
                 <div style={{ height: '130px' }}>
                     <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 ">안녕하세요 !</h1>
                     <div className="flex">
-                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 ">
-                            {text}
-                            {tinkleState && bar}
-                        </h1>
+                        <TypingAnimation toRotate={typingText} />
                     </div>
                 </div>
 
