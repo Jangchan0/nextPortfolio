@@ -1,6 +1,8 @@
 import Animation from './animation';
 import Link from 'next/link';
 import TypingAnimation from './TypingAnimation';
+import { TOKEN, DATABASE_ID } from '../../config/index';
+import ProjectItem from '../../components/projects/project-item';
 
 function Hero() {
     const typingText = '주니어 프론트엔드 개발자 장찬영입니다.';
@@ -31,10 +33,6 @@ function Hero() {
 }
 
 export default Hero;
-
-// import { TOKEN, DATABASE_ID } from '../../config/index';
-// import ProjectItem from '../../components/projects/project-item';
-// import { Z_FULL_FLUSH } from 'zlib';
 
 // export default async function Projects() {
 //     const data = await getData();
