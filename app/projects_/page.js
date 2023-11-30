@@ -20,7 +20,7 @@ export default async function Projects() {
     return (
         <>
             <h1 className="text-4xl font-bold sm:text-6xl justify-center flex my-9">
-                총 프로젝트 <span className="pl-4 text-blue-500">{data.results.length} 가지</span>
+                My projects <span className="pl-4 text-blue-500">{data.results.length}</span>
             </h1>
 
             <div
