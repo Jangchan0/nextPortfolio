@@ -5,7 +5,7 @@ import TypingAnimation from './TypingAnimation';
 function Hero() {
     const navHeight = 80;
 
-    const typingText = '주니어 프론트엔드 개발자 장찬영입니다.';
+    const typingText: string = '주니어 프론트엔드 개발자 장찬영입니다.';
 
     return (
         <>
