@@ -1,9 +1,12 @@
-// TypingAnimation.js
 'use client';
 
 import { useState, useEffect } from 'react';
 
-const TypingAnimation = ({ toRotate }) => {
+interface TypingAnimationProps {
+    toRotate: string;
+}
+
+const TypingAnimation: React.FC<TypingAnimationProps> = ({ toRotate }) => {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [isTypingFin, setIsTypingFin] = useState(false);
