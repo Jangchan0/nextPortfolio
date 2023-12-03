@@ -4,7 +4,7 @@ import GithubSVG from './github-mark.svg';
 function Github() {
     return (
         <div>
-            <Image src={GithubSVG} alt="github" width={50} height={50} />
+            <Image width={30} height={30} src={GithubSVG} alt="github" />
         </div>
     );
 }

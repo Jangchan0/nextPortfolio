@@ -27,17 +27,26 @@ export default function Footer() {
                             </a>
                         </p>
                     </div>
-                    <div>
-                        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                            <a className="text-gray-500">
+                    <div className="flex items-center gap-3">
+                        <div
+                            className="inline-flex transition duration-300 transform  hover:scale-110
+                             hover:shadow-sm sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+                        >
+                            <a className="text-gray-500 " href="https://github.com/Jangchan0 ">
                                 <Github />
                             </a>
-                        </span>
-                        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                            <a className="text-gray-500">
+                        </div>
+                        <div
+                            className="inline-flex transition duration-300 transform  hover:scale-110
+                              hover:shadow-sm  sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start "
+                        >
+                            <a
+                                className="text-gray-500"
+                                href="https://www.instagram.com/chan_0_jang/?igshid=YzAwZjE1ZTI0Zg%3D%3D&utm_source=qr"
+                            >
                                 <Instagram />
                             </a>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </footer>
