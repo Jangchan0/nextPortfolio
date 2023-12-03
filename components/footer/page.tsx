@@ -7,8 +7,8 @@ export default function Footer() {
     return (
         <>
             <footer className="body-font">
-                <div className="container flex item-center space-x-2 ">
-                    <div className=" px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+                <div className="container flex item-center justify-between">
+                    <div className=" px-5 py-6 mx-10 flex items-center sm:flex-row flex-col">
                         <Link
                             href="/"
                             className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
