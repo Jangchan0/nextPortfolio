@@ -24,7 +24,7 @@ export default async function Projects() {
             </h1>
 
             <div
-                className="grid grid-cols-1 md:grid-cols-2 md:gap-1 gap-x-1 gap-y-20 m-6  py-10 "
+                className="grid grid-cols-1 md:grid-cols-2 md:gap-1 gap-x-2 gap-y-20 m-6  py-10 "
                 style={{ justifyItems: 'center', alignItems: 'center' }}
             >
                 {projectSortByDate.map((aProject) => {
@@ -40,7 +40,7 @@ async function getData() {
         method: 'POST',
         headers: {
             accept: 'application/json',
-            'Notion-Version': '2022-02-22',
+            'Notion-Version': '2022-06-28',
             'content-type': 'application/json',
             authorization: `Bearer ${TOKEN}`,
         },
