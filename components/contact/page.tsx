@@ -38,11 +38,18 @@ function Contact() {
 
     return (
         <>
-            <div className="flex grid-cols-2 justify-center item-center bg-primary rounded-md py-10">
-                <div className="contactImg w-1/2">
+            <div className="flex grid-cols-2 justify-center item-center bg-primary rounded-md py-10 cursor-default">
+                <div className="contactImg w-1/2 shadow-lg text-center">
                     <h2 className="text-3xl font-bold sm:text-6xl justify-center flex my-9">Contact</h2>
-                    <div className="developerImg flex justify-center">
-                        <Image src={developerProfile} alt="developer profile" width={350} height={350} />
+                    <p className="text-md font-bold sm:text-md justify-center my-9 ">thank you!</p>
+                    <div className="developerImg flex justify-center mb-6 transition-transform  hover:rotate-[-3deg]">
+                        <Image
+                            src={developerProfile}
+                            alt="developer profile"
+                            className="transition-transform hover:rotate-[-3deg]"
+                            width={350}
+                            height={350}
+                        />
                     </div>
                 </div>
                 <div className="contactContants w-1/2 flex">
