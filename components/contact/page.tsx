@@ -7,7 +7,6 @@ import { useTheme } from 'next-themes';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from '../../config/index';
 
 function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -144,8 +143,3 @@ function Contact() {
 }
 
 export default Contact;
-
-// 'service_k0ba4dp',
-// 'template_i2yl3l8',
-// form.current,
-// 'Dw8vgZag-8fmTAgt7'
