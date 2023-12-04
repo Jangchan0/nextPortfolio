@@ -24,7 +24,7 @@ export default async function Projects() {
             </h1>
 
             <div
-                className="grid grid-cols-1 md:grid-cols-1 md:gap-1 gap-x-2 gap-y-20 m-6  py-10 "
+                className="grid grid-cols-1 md:grid-cols-1 md:gap-1 gap-x-2 gap-y-25 m-6  py-10 "
                 style={{ justifyItems: 'center', alignItems: 'center' }}
             >
                 {projectSortByDate.map((aProject) => {
