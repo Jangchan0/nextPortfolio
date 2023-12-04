@@ -1,4 +1,4 @@
-import { TOKEN, DATABASE_ID } from '../../config/index';
+import { NOTION_TOKEN, NOTION_DATABASE_ID } from '../../config/index';
 import ProjectItem from '../../components/projects/project-item';
 
 export default async function Projects() {
@@ -40,16 +40,16 @@ async function getData() {
         method: 'POST',
         headers: {
             accept: 'application/json',
-            'Notion-Version': '2022-06-28',
+            'Notion-Version': '2022-02-22',
             'content-type': 'application/json',
-            authorization: `Bearer ${TOKEN}`,
+            authorization: `Bearer ${NOTION_TOKEN}`,
         },
         body: JSON.stringify({
             page_size: 100,
         }),
     };
 
-    const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options);
+    const res = await fetch(`https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query`, options);
 
     const projects = await res.json();
 

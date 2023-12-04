@@ -53,8 +53,6 @@ export default function ProjectItem(data) {
                                 bg-sky-200
                                 dark:bg-sky-700
                                 w-30
-                                
-                               
                                 "
                             >
                                 {skill.name}
