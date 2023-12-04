@@ -1,60 +1,95 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import developerImg from '../../public/developerProfile.png';
 import developerImgDark from '../../public/developerProfileDark.png';
 import { useTheme } from 'next-themes';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from '../../config/index';
 
 function Contact() {
-    const { theme, setTheme } = useTheme();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { theme } = useTheme();
 
-    interface FormData {
-        name: string;
-        title: string;
-        message: string | number;
-    }
+    const form = useRef<HTMLFormElement | null>(null);
 
-    const [formData, setFormData] = useState<FormData>({
-        name: '',
-        title: '',
-        message: '',
-    });
+    const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+        if (isSubmitting) {
+            return;
+        }
+        if (form.current) {
+            const formData = new FormData(form.current);
+            const name = formData.get('user_name') as string;
+            const email = formData.get('user_email') as string;
+            const message = formData.get('message') as string;
 
-    const handleSend = () => {
-        // 여기서 서버로 데이터를 보내거나 다른 작업을 수행할 수 있습니다.
-        console.log('Sending data:', formData);
-        // 이 부분을 서버와의 통신으로 변경해야합니다.
+            if (!name || !email || !message) {
+                toast.error(' 내용을 작성해주세요.', {
+                    position: toast.POSITION.TOP_CENTER,
+                    icon: '🚫',
+                    hideProgressBar: true,
+                    className: 'toast-message',
+                });
+                return;
+            }
+
+            try {
+                setIsSubmitting(true);
+
+                await emailjs.sendForm(
+                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+                    form.current,
+                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+                );
+
+                form.current?.reset();
+
+                toast.success('소중한 의견 감사드립니다.', {
+                    position: toast.POSITION.TOP_CENTER,
+                    icon: '✉️',
+                    hideProgressBar: true,
+                    className: 'toast-message',
+                });
+            } catch (error) {
+                toast.error('메일 전송에 실패하였습니다. ', {
+                    position: toast.POSITION.TOP_CENTER,
+                    icon: '🥲',
+                    hideProgressBar: true,
+                    className: 'toast-message',
+                });
+            } finally {
+                setIsSubmitting(false);
+            }
+        }
     };
 
     const developerProfile = theme === 'light' ? developerImgDark : developerImg;
 
     return (
         <>
-            <div className="flex grid-cols-2 justify-center item-center bg-primary rounded-md py-10 cursor-default">
-                <div className="contactImg w-1/2 shadow-lg text-center">
+            <ToastContainer />
+            <div className="md:flex sm:flex-row sm:item-center justify-center item-center bg-primary rounded-md py-10 cursor-default">
+                <div className="contactImg md:w-1/2 sm:w-full shadow-lg text-center">
                     <h2 className="text-3xl font-bold sm:text-6xl justify-center flex my-9">Contact</h2>
                     <p className="text-md font-bold sm:text-md justify-center my-9 ">thank you!</p>
-                    <div className="developerImg flex justify-center mb-6 transition-transform  hover:rotate-[-3deg]">
+                    <div className="developerImg flex justify-center mb-6 transition-transform  hover:rotate-[-2deg]">
                         <Image
                             src={developerProfile}
                             alt="developer profile"
-                            className="transition-transform hover:rotate-[-3deg]"
+                            className="transition-transform hover:rotate-[-2deg]"
                             width={350}
                             height={350}
                         />
                     </div>
                 </div>
-                <div className="contactContants w-1/2 flex">
+                <div className="contactContants md:w-1/2 sm:w-full flex">
                     <div className="container mx-auto p-4 flex justify-center items-center">
-                        <form className="container max-w-md flex flex-col ">
+                        <form className="container max-w-md flex flex-col" ref={form} onSubmit={sendEmail}>
                             <div className="mb-8">
                                 <label
                                     htmlFor="name"
@@ -64,26 +99,20 @@ function Contact() {
                                 </label>
                                 <input
                                     type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
+                                    name="user_name"
                                     className="w-full border rounded p-2 bg-slate-200 dark:bg-slate-400"
                                 />
                             </div>
                             <div className="mb-8">
                                 <label
-                                    htmlFor="title"
+                                    htmlFor="email"
                                     className="block text-gray-700 dark:text-gray-100  text-sm font-bold mb-2"
                                 >
-                                    Title
+                                    Email
                                 </label>
                                 <input
-                                    type="text"
-                                    id="title"
-                                    name="title"
-                                    value={formData.title}
-                                    onChange={handleChange}
+                                    type="email"
+                                    name="user_email"
                                     className="w-full border rounded p-2  bg-slate-200 dark:bg-slate-400"
                                 />
                             </div>
@@ -95,21 +124,17 @@ function Contact() {
                                     Message
                                 </label>
                                 <textarea
-                                    id="message"
                                     name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
                                     className="w-full h-28 border rounded p-2  bg-slate-200 dark:bg-slate-400"
                                     style={{ resize: 'none' }}
                                 />
                             </div>
-                            <button
-                                type="button"
-                                onClick={handleSend}
-                                className="bg-blue-500 text-white p-2 rounded mt-4"
-                            >
-                                Send
-                            </button>
+                            <input
+                                className="bg-blue-500 text-white p-2 rounded mt-4  active:bg-blue-700 cursor-pointer"
+                                type="submit"
+                                value="Send"
+                                disabled={isSubmitting}
+                            />
                         </form>
                     </div>
                 </div>
@@ -119,3 +144,8 @@ function Contact() {
 }
 
 export default Contact;
+
+// 'service_k0ba4dp',
+// 'template_i2yl3l8',
+// form.current,
+// 'Dw8vgZag-8fmTAgt7'
