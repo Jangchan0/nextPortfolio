@@ -30,23 +30,28 @@ export default function ProjectItem(data) {
             </Link>
             <div className="flex justify-between">
                 <div className="p-4 flex flex-col ">
-                    <Link href={notionDetail}>
-                        <h1 className="text-2xl font-bold">{title}</h1>
-                        <h3 className=" mt-4 text-lg">{discription}</h3>{' '}
+                    <h1 className="text-2xl font-bold">{title}</h1>
+                    <h3 className=" mt-4 text-lg">{discription}</h3>
+                    <p className="my-2 cursor-default"> 작업기간: {progressPeriod}</p>
+                </div>
+                <div className="flex flex-col gap-4 p-4 text-center items-left">
+                    <Link href={githubLink} passHref>
+                        <button className="btn-project  ">Github</button>
                     </Link>
-                    <a className="mt-2" href={githubLink}>
-                        깃허브 바로가기
-                    </a>
-                    <p className="my-1 cursor-default"> 작업기간: {progressPeriod}</p>
-                    <div className="flex items-start mt-2 overflow-wrap-break-word cursor-default">
-                        {skillList.map((skill, i) => {
-                            return (
-                                <h1
-                                    key={i}
-                                    className="
+                    <Link href={notionDetail} passHref>
+                        <button className="btn-project">Notion</button>
+                    </Link>
+                </div>
+            </div>
+            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-wrap-break-word cursor-default">
+                {skillList.map((skill, i) => {
+                    return (
+                        <h1
+                            key={i}
+                            className="
                                 flex
                                 items-start
-                                mt-2
+                                
                                 px-2
                                 py-1
                                 mr-2
@@ -55,17 +60,11 @@ export default function ProjectItem(data) {
                                 dark:bg-sky-700
                                 w-30
                                 "
-                                >
-                                    {skill.name}
-                                </h1>
-                            );
-                        })}
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4 p-4">
-                    <button className="btn-project">Github</button>
-                    <button className="btn-project">Detail Info</button>
-                </div>
+                        >
+                            {skill.name}
+                        </h1>
+                    );
+                })}
             </div>
         </div>
     );
