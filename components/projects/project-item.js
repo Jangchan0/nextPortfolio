@@ -39,7 +39,7 @@ export default function ProjectItem({ data, img }) {
                     </Link>
                 </div>
             </div>
-            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-wrap-break-word cursor-default">
+            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-scroll cursor-default">
                 {skillList.map((skill, i) => {
                     return (
                         <h1
