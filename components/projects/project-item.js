@@ -1,33 +1,30 @@
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 
-export default function ProjectItem(data) {
-    const title = data.data.properties.이름.title[0]?.text.content;
-    const progressPeriod = `${data.data.properties[`진행 기간`].date.start} ~ ${
-        data.data.properties[`진행 기간`].date.end
-    }`;
-    const discriptionList = data.data.properties[`한 줄 소개`].rich_text;
-    const githubLink = data.data.properties.Github.url;
-    const skillList = data.data.properties.Skills.multi_select;
-    const imgSrc = data.data.cover.file.url;
-    const notionDetail = data.data.public_url;
+export default function ProjectItem({ data, img }) {
+    const title = data.properties.이름.title[0]?.text.content;
+    const progressPeriod = `${data.properties[`진행 기간`].date.start} ~ ${data.properties[`진행 기간`].date.end}`;
+    const discriptionList = data.properties[`한 줄 소개`].rich_text;
+    const githubLink = data.properties.Github.url;
+    const skillList = data.properties.Skills.multi_select;
+    const imgSrc = data.cover.file.url;
+    const notionDetail = data.public_url;
 
     const discription = discriptionList.map((item) => item.plain_text);
 
     return (
-        <div className="project-card  w-[50vw] min-w-[340px]  ">
-            <Link href={notionDetail}>
-                <Image
-                    className="rounded-t-xl "
-                    src={imgSrc}
-                    alt="cover image"
-                    width={500}
-                    height={300}
-                    layout="responsive"
-                    objectFit="cover"
-                    quality={100}
-                />
-            </Link>
+        <div className="project-card w-[45vw] min-w-[340px] p-3 ">
+            <Image
+                className="rounded-xl "
+                src={img}
+                alt="cover image"
+                width={500}
+                height={300}
+                layout="responsive"
+                objectFit="cover"
+                quality={100}
+            />
+
             <div className="flex justify-between">
                 <div className="p-4 flex flex-col ">
                     <h1 className="text-2xl font-bold">{title}</h1>

@@ -17,6 +17,14 @@ export default async function Projects() {
         return 0;
     });
 
+    const imgThumbnail = [
+        { id: 1, img: '/thumbnail/nextPortFolio.png' },
+        { id: 2, img: '/thumbnail/oms.png' },
+        { id: 3, img: '/thumbnail/csm17.png' },
+        { id: 4, img: '/thumbnail/shallWe.png' },
+        { id: 5, img: '/thumbnail/SIMPLE.png' },
+    ];
+
     return (
         <>
             <h1 className="text-4xl font-bold sm:text-6xl justify-center flex my-9">
@@ -27,8 +35,8 @@ export default async function Projects() {
                 className="grid grid-cols-1 md:grid-cols-1 md:gap-1 gap-x-3 gap-y-25 m-6 py-10 "
                 style={{ justifyItems: 'center', alignItems: 'center' }}
             >
-                {projectSortByDate.map((aProject) => {
-                    return <ProjectItem key={aProject.id} data={aProject} />;
+                {projectSortByDate.map((aProject, index) => {
+                    return <ProjectItem key={aProject.id} data={aProject} img={imgThumbnail[index].img} />;
                 })}
             </div>
         </>
@@ -40,7 +48,7 @@ async function getData() {
         method: 'POST',
         headers: {
             accept: 'application/json',
-            'Notion-Version': '2022-02-22',
+            'Notion-Version': '2022-06-28',
             'content-type': 'application/json',
             authorization: `Bearer ${NOTION_TOKEN}`,
         },
