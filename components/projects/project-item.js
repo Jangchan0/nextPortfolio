@@ -7,7 +7,6 @@ export default function ProjectItem({ data, img }) {
     const discriptionList = data.properties[`한 줄 소개`].rich_text;
     const githubLink = data.properties.Github.url;
     const skillList = data.properties.Skills.multi_select;
-    const imgSrc = data.cover.file.url;
     const notionDetail = data.public_url;
 
     const discription = discriptionList.map((item) => item.plain_text);
