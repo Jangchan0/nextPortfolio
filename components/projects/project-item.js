@@ -12,7 +12,7 @@ export default function ProjectItem({ data, img }) {
     const discription = discriptionList.map((item) => item.plain_text);
 
     return (
-        <div className="project-card w-[45vw] min-w-[340px] p-3 ">
+        <div className="project-card w-[45vw] min-w-[370px] p-3 ">
             <Image
                 className="rounded-xl "
                 src={img}
