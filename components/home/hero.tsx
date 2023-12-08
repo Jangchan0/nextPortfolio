@@ -1,6 +1,7 @@
 import Animation from './animation';
 import Link from 'next/link';
 import TypingAnimation from './TypingAnimation';
+import ThreeScene from '../../components/three/page';
 
 function Hero() {
     const navHeight = 80;
@@ -34,7 +35,9 @@ function Hero() {
                             </div>
                         </div>
                         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                            <Animation />
+                            {/* <div className="flex justify-center items-center h-[100vh]"> */}
+                            {/* <Animation /> */}
+                            <ThreeScene />
                         </div>
                     </div>
                 </section>
