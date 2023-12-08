@@ -1,27 +1,50 @@
 'use client';
 import { useRef, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const ThreeScene = () => {
-    const gltfRef = useRef();
+    const canvasRef = useRef();
 
     useEffect(() => {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 10;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+
+        // GLTF Loader
         const loader = new GLTFLoader();
-        loader.load('/three/scene.gltf', (gltf) => {
-            console.log(gltf);
-            gltfRef.current = gltf;
-            const clonedScene = gltf.scene.clone();
-            gltfRef.current.scene.add(clonedScene);
+        loader.load('/models/scene.gltf', (gltf) => {
+            const model = gltf.scene;
+
+            scene.add(model);
         });
+
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            camera.position.x = Math.sin(Date.now() * 0.001) * 5;
+
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        return () => {
+            loader.dispose(); // Dispose loader resources
+            renderer.dispose();
+        };
     }, []);
 
     return (
-        <Canvas style={{ width: '100%', height: '100%' }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <group ref={gltfRef} />
-        </Canvas>
+        <div className="w-1/2 flex">
+            <canvas ref={canvasRef} />
+        </div>
     );
 };
 
