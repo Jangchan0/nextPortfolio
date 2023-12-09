@@ -1,7 +1,7 @@
 import Animation from './animation';
 import Link from 'next/link';
 import TypingAnimation from './TypingAnimation';
-import ThreeScene from '../../components/three/page';
+import ThreeScene from '../three/Computer';
 
 function Hero() {
     const navHeight = 80;
