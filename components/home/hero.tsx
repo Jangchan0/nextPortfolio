@@ -15,8 +15,8 @@ function Hero() {
                     className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font"
                     style={{ marginTop: `-${navHeight}px` }}
                 >
-                    <div className={`container flex items-center justify-center `}>
-                        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                    <div className={`container flex items-center justify-center  `}>
+                        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-0  flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                             <div style={{ height: '130px' }} className="flex flex-col">
                                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 ">
                                     안녕하세요!
@@ -34,7 +34,7 @@ function Hero() {
                                 </button>
                             </div>
                         </div>
-                        <div className="lg:max-w-lg lg:w-1/2 md:w-1/2 w-5/6 h-1/2">
+                        <div className=" flex justify-center md:mt-12">
                             {/* <Animation /> */}
                             <ThreeScene />
                         </div>
