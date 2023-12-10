@@ -6,12 +6,13 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const BackgroundThree = () => {
     const canvasRef = useRef();
+    const scrollRef = useRef(0);
 
     useEffect(() => {
         const scene = new THREE.Scene(); // 화면 씬 생성
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000); // 카메라 생성
 
-        camera.position.set(3, 2, 10); // 카메라 위치
+        camera.position.set(3, 0, 10); // 카메라 위치
         camera.lookAt(new THREE.Vector3(0, 0.5, 0)); // 카메라가 바라보는 위치
 
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: true }); //
@@ -28,6 +29,11 @@ const BackgroundThree = () => {
             scene.add(model);
         });
 
+        const handleScroll = () => {
+            camera.position.y = 2 + scrollRef.current / 100; // Adjust the factor as needed
+            camera.lookAt(new THREE.Vector3(0, 0.5 - scrollRef.current / 100, 0));
+        };
+
         const animate = () => {
             requestAnimationFrame(animate);
 
@@ -36,13 +42,19 @@ const BackgroundThree = () => {
 
         animate();
 
+        window.addEventListener('scroll', () => {
+            scrollRef.current = window.scrollY;
+            handleScroll();
+        });
+
         return () => {
             loader.dispose();
             renderer.dispose();
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
-    return <canvas className="w-full h-[100vh] absolute z-0" ref={canvasRef} />;
+    return <canvas className="w-full h-full absolute z-0" ref={canvasRef} />;
 };
 
 export default BackgroundThree;

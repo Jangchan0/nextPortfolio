@@ -4,7 +4,6 @@ import './globals.css';
 import Header from '../components/header/page';
 import Footer from '../components/footer/page';
 import { Providers } from './providers';
-import Background from '../components/three/Background';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <Providers>
                     <div className="bg-primary flex flex-col item-center justify-center">
-                        <Background />
                         <Header />
                         {children}
                         <Footer />
