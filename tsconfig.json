@@ -32,7 +32,8 @@
         "app/projects_/page.js",
         "app/projects_/page.js",
         "components/projects/project-item.tsx",
-        "public/svg/githubSVG.js"
+        "public/svg/githubSVG.js",
+        "app/layout.js"
     ],
     "exclude": ["node_modules"]
 }
