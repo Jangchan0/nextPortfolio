@@ -12,8 +12,8 @@ const BackgroundThree = () => {
         const scene = new THREE.Scene(); // 화면 씬 생성
         const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000); // 카메라 생성
 
-        camera.position.set(2, 0, 10); // 카메라 위치
-        camera.lookAt(new THREE.Vector3(0, 0, 0)); // 카메라가 바라보는 위치
+        camera.position.set(0, 3, 10); // 카메라 위치
+        // camera.lookAt(new THREE.Vector3(0, 0, 0)); // 카메라가 바라보는 위치
 
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: true }); //
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -41,8 +41,8 @@ const BackgroundThree = () => {
         };
 
         const handleScroll = () => {
-            camera.position.y = 2 - scrollRef.current / 100; // Adjust the factor as needed
-            // camera.lookAt(new THREE.Vector3(0, 0.5 - scrollRef.current / 100, 0));
+            camera.position.y = 3 - scrollRef.current / 1500; // Adjust the factor as needed
+            // camera.lookAt(new THREE.Vector3(0, 5 - scrollRef.current / 100, 0));
         };
 
         const animate = () => {
