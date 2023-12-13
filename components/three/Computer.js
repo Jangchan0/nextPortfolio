@@ -31,8 +31,8 @@ const ThreeScene = () => {
         const animate = () => {
             requestAnimationFrame(animate);
 
-            camera.position.x = Math.sin(Date.now() * 0.0005) * 2.5 + 1.5; // 카메라 무빙!
-            camera.lookAt(new THREE.Vector3(Math.sin(Date.now() * 0.0001) * 2.5, 0.5, 0)); // 무빙 중에 지속적으로 바라볼 위치 설정
+            camera.position.x = Math.sin(Date.now() * 0.0005) * 2.5 + 2.5; // 카메라 무빙!
+            camera.lookAt(new THREE.Vector3(Math.sin(Date.now() * 0.0003) * 1, 0.5, 0)); // 무빙 중에 지속적으로 바라볼 위치 설정
 
             renderer.render(scene, camera);
         };
@@ -45,12 +45,7 @@ const ThreeScene = () => {
         };
     }, []);
 
-    return (
-        <canvas
-            className="sm:w-[300px] sm:h-[200px] md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[400px]"
-            ref={canvasRef}
-        />
-    );
+    return <canvas className=" w-full sm:h-[150px] md:h-[300px] lg:h-[400px]" ref={canvasRef} />;
 };
 
 export default ThreeScene;
