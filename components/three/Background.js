@@ -10,9 +10,9 @@ const BackgroundThree = () => {
 
     useEffect(() => {
         const scene = new THREE.Scene(); // 화면 씬 생성
-        const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000); // 카메라 생성
+        const camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000); // 카메라 생성
 
-        camera.position.set(0, 3, 10); // 카메라 위치
+        camera.position.set(0, 3.8, 10); // 카메라 위치
         // camera.lookAt(new THREE.Vector3(0, 0, 0)); // 카메라가 바라보는 위치
 
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: true }); //
@@ -26,6 +26,7 @@ const BackgroundThree = () => {
         const loader = new GLTFLoader(); //GLTF 파일 모델 load!
         loader.load('/backgroundThree/scene.gltf', (gltf) => {
             const model = gltf.scene;
+            // model.rotation.z = Math.PI / 2;
 
             scene.add(model);
         });
@@ -41,7 +42,7 @@ const BackgroundThree = () => {
         };
 
         const handleScroll = () => {
-            camera.position.y = 3 - scrollRef.current / 1500; // Adjust the factor as needed
+            camera.position.y = 3.8 - scrollRef.current / 3000; // Adjust the factor as needed
             // camera.lookAt(new THREE.Vector3(0, 5 - scrollRef.current / 100, 0));
         };
 
