@@ -49,7 +49,7 @@ const BackgroundThree = () => {
         };
 
         const handleScroll = () => {
-            camera.position.y = 3.8 - scrollRef.current / 3000; //스크롤 이벤트 적용 [초기 위치값 => 이벤트 발현 이동 속도]
+            camera.position.y = 3.8 - scrollRef.current / 2500; //스크롤 이벤트 적용 [초기 위치값 => 이벤트 발현 이동 속도]
             // camera.lookAt(new THREE.Vector3(0, 5 - scrollRef.current / 100, 0));
         };
 
