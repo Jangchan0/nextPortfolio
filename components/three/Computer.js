@@ -48,7 +48,7 @@ const ThreeScene = () => {
         };
     }, []);
 
-    return <canvas className=" w-full sm:h-[150px] md:h-[300px] lg:h-[400px]" ref={canvasRef} />;
+    return <canvas className=" w-full sm:h-fit md:h-fit lg:h-[400px]" ref={canvasRef} />;
 };
 
 export default ThreeScene;

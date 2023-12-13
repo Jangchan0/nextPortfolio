@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import TypingAnimation from './TypingAnimation';
 import ThreeScene from '../three/Computer';
 import { useRef } from 'react';
@@ -10,8 +9,7 @@ function Hero() {
     const onMoveBox = () => {
         element.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-
-    const typingText: string = '주니어 프론트엔드 개발자 장찬영입니다.';
+    let typingText = '주니어 프론트엔드 개발자 장찬영입니다.';
 
     return (
         <>
