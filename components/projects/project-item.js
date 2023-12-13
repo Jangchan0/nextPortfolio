@@ -35,7 +35,7 @@ export default function ProjectItem({ data, img }) {
                         <button className="btn-project  ">Github</button>
                     </Link>
                     <Link href={notionDetail} passHref>
-                        <button className="btn-project">Notion</button>
+                        <button className="btn-project">Info</button>
                     </Link>
                 </div>
             </div>

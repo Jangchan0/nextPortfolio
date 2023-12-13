@@ -40,12 +40,12 @@ const ThreeScene = () => {
         animate();
 
         return () => {
-            loader.dispose();
+            // loader.dispose();
             renderer.dispose();
         };
     }, []);
 
-    return <canvas className="w-[500px] h-[400px]" ref={canvasRef} />;
+    return <canvas className="w-[500px] h-[400px] sm:w-[300px] sm-h-[300px]" ref={canvasRef} />;
 };
 
 export default ThreeScene;

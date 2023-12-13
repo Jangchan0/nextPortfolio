@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-primary {
-    @apply bg-white dark:bg-slate-800 /* 다크 모드에서의 배경색을 지정 */;
+    @apply bg-slate-100 dark:bg-slate-800 /* 다크 모드에서의 배경색을 지정 */;
 }
 
 .btn-project {
