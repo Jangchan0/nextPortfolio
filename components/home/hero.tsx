@@ -17,7 +17,7 @@ function Hero() {
         <>
             <div>
                 <section
-                    className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font"
+                    className="flex min-h-screen  flex-col items-center justify-center text-gray-600 body-font"
                     style={{ marginTop: `-${navHeight}px` }}
                 >
                     <div className="container lg:flex items-center justify-between  md:flex-grow-1">
