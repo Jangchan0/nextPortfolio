@@ -10,7 +10,9 @@ const ThreeScene = () => {
     useEffect(() => {
         const scene = new THREE.Scene(); // 화면 씬 생성
         const cameraFOV = window.innerWidth <= 640 ? 80 : 40; // 640px 이하에서는 70, 그 외에는 40
-        const camera = new THREE.PerspectiveCamera(cameraFOV, window.innerWidth / window.innerHeight, 0.1, 1000); // 카메라 생성
+        const targetHeight = 500; // 원하는 높이 값
+        const targetAspectRatio = window.innerWidth / targetHeight;
+        const camera = new THREE.PerspectiveCamera(cameraFOV, targetAspectRatio, 0.1, 1000);
 
         camera.position.set(3, 2, 10); // 카메라 위치
         camera.lookAt(new THREE.Vector3(0, 0.5, 0)); // 카메라가 바라보는 위치
