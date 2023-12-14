@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply z-10;
+}
+
 .bg-primary {
     @apply bg-slate-100 dark:bg-slate-800 /* 다크 모드에서의 배경색을 지정 */;
 }
