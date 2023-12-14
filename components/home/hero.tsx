@@ -2,9 +2,10 @@
 import TypingAnimation from './TypingAnimation';
 import ThreeScene from '../three/Computer';
 import { useRef } from 'react';
+import PhotoCard from '../photoCard/page';
 
 function Hero() {
-    const navHeight = 80;
+    const navHeight = 90;
     const element = useRef<HTMLDivElement>(null);
     const onMoveBox = () => {
         element.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -35,8 +36,9 @@ function Hero() {
                                 </button>
                             </div>
                         </div>
-                        <div className="lg:w-1/2 w-full flex justify-center md:mt-12">
-                            <ThreeScene />
+                        <div className="lg:w-1/2 w-full flex lg:justify-end lg:mr-12 md:mr-0 md:justify-center lg:mt-0 md:mt-12 ">
+                            {/* <ThreeScene /> */}
+                            <PhotoCard />
                         </div>
                     </div>
                 </section>

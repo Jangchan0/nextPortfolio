@@ -48,7 +48,7 @@ async function getData() {
         method: 'POST',
         headers: {
             accept: 'application/json',
-            'Notion-Version': '2022-06-28',
+            'Notion-Version': '2022-02-22',
             'content-type': 'application/json',
             authorization: `Bearer ${NOTION_TOKEN}`,
         },
