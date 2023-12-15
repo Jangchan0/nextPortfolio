@@ -37,8 +37,8 @@ function DarkModeToggleBtn() {
                 focus:outline-none 
                  ${
                      theme === `light`
-                         ? 'hover:bg-gray-200 rounded text-base mt-4 md:mt-0 hover:text-orange-500'
-                         : 'bg-slate-600 text-slate-400 hover:bg-slate-700 rounded text-base mt-4 md:mt-0 hover:text-yellow-500'
+                         ? 'hover:bg-gray-200 rounded text-base sm:mt-4 md:mt-4 lg:mt-0 hover:text-orange-500'
+                         : 'bg-slate-600 text-slate-400 hover:bg-slate-700 rounded text-base sm:mt-4 md:mt-4 lg:mt-0 hover:text-yellow-500'
                  }`}
             type="button"
             onClick={buttonClick}

@@ -8,6 +8,11 @@ module.exports = {
     ],
     theme: {
         extend: {},
+        screens: {
+            sm: { min: '320px', max: '799px' },
+            md: { min: '800px', max: '1079px' },
+            lg: { min: '1080px' },
+        },
     },
     darkMode: 'class',
     plugins: [],

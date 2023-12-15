@@ -1,0 +1,12 @@
+.bg-gradient-custom {
+    background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 64%
+    );
+}
+.transitionTime {
+    transition: all 0.1s;
+}

@@ -4,8 +4,11 @@ import DarkModeToggleBtn from '../home/darkModeToggleBtn';
 export default function Header() {
     return (
         <header className="text-gray-600 body-font z-10 bg-primary">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                <Link href="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <div className="container mx-auto lg:flex flex-wrap p-5 md:flex md:items-center sm:flex-col sm:items-center sm:justify-center lg:justify-between lg:items-center ">
+                <Link
+                    href="/"
+                    className="flex title-font font-medium items-center justify-center text-gray-900 mb-4 md:mb-0"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -20,18 +23,22 @@ export default function Header() {
                     </svg>
                     <span className="ml-3 text-xl">장찬영 포트폴리오</span>
                 </Link>
-                <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                    <Link href="/" className="mr-5 hover:text-gray-900">
-                        홈
-                    </Link>
-                    <Link href="/projects_" className="mr-5 hover:text-gray-900">
-                        프로젝트
-                    </Link>
-                    <Link href="https://open.kakao.com/o/sW0dhISf" className="mr-5 hover:text-gray-900">
-                        연락하기
-                    </Link>
-                </nav>
-                <DarkModeToggleBtn />
+                <div className="lg:flex md:flex sm:flex-col items-center">
+                    <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                        <Link href="/" className="mr-5 hover:text-gray-900">
+                            홈
+                        </Link>
+                        <Link href="/projects_" className="mr-5 hover:text-gray-900">
+                            프로젝트
+                        </Link>
+                        <Link href="https://open.kakao.com/o/sW0dhISf" className="mr-5 hover:text-gray-900">
+                            연락하기
+                        </Link>
+                    </nav>
+                    <div className="flex justify-center">
+                        <DarkModeToggleBtn />
+                    </div>
+                </div>
             </div>
         </header>
     );

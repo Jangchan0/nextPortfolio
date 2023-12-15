@@ -36,7 +36,7 @@ function Hero() {
                                 </button>
                             </div>
                         </div>
-                        <div className="lg:w-1/2 w-full flex lg:justify-end lg:mr-12 md:mr-0 md:justify-center lg:mt-0 md:mt-12 ">
+                        <div className="lg:w-1/2 w-full flex lg:justify-end lg:mr-12 md:mr-0 md:justify-center sm:justify-center lg:mt-0 md:mt-12 ">
                             {/* <ThreeScene /> */}
                             <PhotoCard />
                         </div>
