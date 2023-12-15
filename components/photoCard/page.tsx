@@ -11,7 +11,7 @@ class PhotoCard extends Component {
         overlayStyle: {},
         isMouseOver: false,
     };
-    handleTouchMove = (e) => {
+    handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
         const touch = e.touches[0];
         this.handleMouseMove({
             nativeEvent: {
