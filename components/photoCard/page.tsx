@@ -21,8 +21,8 @@ class PhotoCard extends Component {
 
         const newRotateAngleX = Math.min(Math.max((-1 / 8) * offsetY + 30, -30), 30);
 
-        // 현재 각도와 새로운 각도 사이의 보간
-        const easeFactor = 0.1; // 보간에 사용할 상수 (조절 가능)
+        // 현재 각도와 새로운 각도 사이의 차이보완
+        const easeFactor = 0.1;
         const interpolatedRotateAngleY =
             this.state.rotateAngleY + easeFactor * (newRotateAngleY - this.state.rotateAngleY);
         const interpolatedRotateAngleX =
