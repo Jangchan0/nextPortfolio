@@ -6,9 +6,9 @@ import Instagram from '../../public/svg/Instagram';
 export default function Footer() {
     return (
         <>
-            <footer className="body-font bg-primary z-10">
-                <div className="container flex item-center justify-between">
-                    <div className=" px-5 py-6 mx-10 flex items-center sm:flex-row flex-col">
+            <footer className="body-font bg-primary z-10 ">
+                <div className="container flex item-center justify-between mx-auto">
+                    <div className=" px-5 py-6  flex items-center sm:flex-row flex-col">
                         <Link
                             href="/"
                             className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"

@@ -75,7 +75,7 @@ const BackgroundThree = () => {
         };
     }, [theme]);
 
-    return <canvas className="fixed top-0 z-0" ref={canvasRef} />;
+    return <canvas className="fixed top-0 -z-0" ref={canvasRef} />;
 };
 
 export default BackgroundThree;

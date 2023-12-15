@@ -13,7 +13,6 @@ function DarkModeToggleBtn() {
         } else {
             // 기본모드 -> 다크모드
             localStorage.removeItem('theme');
-
             document.documentElement.classList.add('dark');
             localStorage.setItem('theme', 'dark');
         }
@@ -37,8 +36,8 @@ function DarkModeToggleBtn() {
                 focus:outline-none 
                  ${
                      theme === `light`
-                         ? 'hover:bg-gray-200 rounded text-base sm:mt-4 md:mt-4 lg:mt-0 hover:text-orange-500'
-                         : 'bg-slate-600 text-slate-400 hover:bg-slate-700 rounded text-base sm:mt-4 md:mt-4 lg:mt-0 hover:text-yellow-500'
+                         ? 'hover:bg-gray-200 rounded text-base md:mt-0 lg:mt-0 sm:mt-4  hover:text-orange-500'
+                         : 'bg-slate-600 text-slate-400 hover:bg-slate-700 rounded text-base  md:mt-0 lg:mt-0 sm:mt-4 hover:text-yellow-500'
                  }`}
             type="button"
             onClick={buttonClick}

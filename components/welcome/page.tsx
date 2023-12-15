@@ -7,7 +7,7 @@ const WelcomeToast = () => {
     useEffect(() => {
         toast.info('안녕하세요! 프론트엔드 장찬영입니다!', {
             icon: '😄',
-            position: toast.POSITION.TOP_CENTER,
+            position: toast.POSITION.BOTTOM_CENTER,
             autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
