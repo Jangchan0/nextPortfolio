@@ -11,15 +11,6 @@ class PhotoCard extends Component {
         overlayStyle: {},
         isMouseOver: false,
     };
-    handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-        const touch = e.touches[0];
-        this.handleMouseMove({
-            nativeEvent: {
-                offsetX: touch.clientX,
-                offsetY: touch.clientY,
-            },
-        });
-    };
 
     handleMouseMove = (e: { nativeEvent: { offsetX: any; offsetY: any } }) => {
         const { offsetX, offsetY } = e.nativeEvent;
@@ -73,11 +64,13 @@ class PhotoCard extends Component {
         return (
             <>
                 <div
-                    className=" cardContainer lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative"
+                    className=" cardContainer lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative "
                     onMouseMove={this.handleMouseMove}
-                    onTouchMove={this.handleTouchMove}
                     onMouseEnter={this.handleMouseEnter}
                     onMouseLeave={this.handleMouseLeave}
+                    style={{
+                        animation: window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
+                    }}
                 >
                     <div
                         className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-80 mix-blend-color-dodge rounded-2xl  ${

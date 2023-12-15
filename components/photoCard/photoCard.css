@@ -1,3 +1,15 @@
+@keyframes rotateAnimation {
+    0% {
+        transform: rotateY(-20deg) rotateX(10deg);
+    }
+    50% {
+        transform: rotateY(30deg) rotateX(0deg);
+    }
+    100% {
+        transform: rotateY(-20deg) rotateX(10deg);
+    }
+}
+
 .bg-gradient-custom {
     background: linear-gradient(
         105deg,
