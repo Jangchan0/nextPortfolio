@@ -10,6 +10,7 @@ class PhotoCard extends Component {
         rotateAngleX: 0,
         overlayStyle: {},
         isMouseOver: false,
+        isClientSide: false,
     };
 
     handleMouseMove = (e: { nativeEvent: { offsetX: any; offsetY: any } }) => {
@@ -57,9 +58,13 @@ class PhotoCard extends Component {
             isMouseOver: false,
         });
     };
+    componentDidMount() {
+        // Check if the component is mounted on the client side
+        this.setState({ isClientSide: true });
+    }
 
     render() {
-        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver } = this.state;
+        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver, isClientSide } = this.state;
 
         return (
             <>
@@ -69,7 +74,7 @@ class PhotoCard extends Component {
                     onMouseEnter={this.handleMouseEnter}
                     onMouseLeave={this.handleMouseLeave}
                     style={{
-                        animation: window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
+                        animation: isClientSide && window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
                     }}
                 >
                     <div
