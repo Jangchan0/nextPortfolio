@@ -9,6 +9,7 @@ class PhotoCard extends Component {
         rotateAngleY: 0,
         rotateAngleX: 0,
         overlayStyle: {},
+        isMouseOver: false,
     };
 
     handleMouseMove = (e: { nativeEvent: { offsetX: any; offsetY: any } }) => {
@@ -42,33 +43,43 @@ class PhotoCard extends Component {
         });
     };
 
-    originalAngle = () => {
+    handleMouseEnter = () => {
+        this.setState({
+            isMouseOver: true,
+        });
+    };
+
+    handleMouseLeave = () => {
         this.setState({
             rotateAngleY: 0,
             rotateAngleX: 0,
             overlayStyle: {},
+            isMouseOver: false,
         });
     };
 
     render() {
-        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize } = this.state;
+        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver } = this.state;
 
         return (
             <>
                 <div
-                    className=" cardContainer  lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative "
+                    className=" cardContainer lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative"
                     onMouseMove={this.handleMouseMove}
-                    onMouseLeave={this.originalAngle}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}
                 >
                     <div
-                        className="overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-80 mix-blend-color-dodge rounded-2xl"
+                        className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-80 mix-blend-color-dodge rounded-2xl  ${
+                            isMouseOver ? '' : 'transition-all'
+                        }`}
                         style={{
                             ...overlayStyle,
                             transform: `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`,
                         }}
                     ></div>
                     <Image
-                        className={`bg-cover w-full h-full`}
+                        className={`bg-cover w-full h-full shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
                         src={photoCard}
                         alt="장찬영 소개 카드"
                         style={{
