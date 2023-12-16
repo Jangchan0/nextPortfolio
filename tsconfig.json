@@ -28,10 +28,12 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "app/_app.js",
+        "app/_app.tsx",
         "app/projects_/page.js",
         "app/projects_/page.js",
-        "components/projects/project-item.tsx"
+        "components/projects/project-item.tsx",
+        "public/svg/githubSVG.js",
+        "app/layout.js"
     ],
     "exclude": ["node_modules"]
 }

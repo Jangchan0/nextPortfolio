@@ -1,4 +1,4 @@
-import { TOKEN, DATABASE_ID } from '../../config/index';
+import { NOTION_TOKEN, NOTION_DATABASE_ID } from '../../config/index';
 import ProjectItem from '../../components/projects/project-item';
 
 export default async function Projects() {
@@ -17,18 +17,26 @@ export default async function Projects() {
         return 0;
     });
 
+    const imgThumbnail = [
+        { id: 1, img: '/thumbnail/nextPortFolio.png' },
+        { id: 2, img: '/thumbnail/oms.png' },
+        { id: 3, img: '/thumbnail/csm17.png' },
+        { id: 4, img: '/thumbnail/shallWe.png' },
+        { id: 5, img: '/thumbnail/SIMPLE.png' },
+    ];
+
     return (
         <>
             <h1 className="text-4xl font-bold sm:text-6xl justify-center flex my-9">
-                총 프로젝트 <span className="pl-4 text-blue-500">{data.results.length} 가지</span>
+                My projects <span className="pl-4 text-blue-500">{data.results.length}</span>
             </h1>
 
             <div
-                className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-20 m-6  py-10 "
+                className="grid grid-cols-1 md:grid-cols-1 md:gap-1 gap-x-3 gap-y-25 m-6 py-10 "
                 style={{ justifyItems: 'center', alignItems: 'center' }}
             >
-                {projectSortByDate.map((aProject) => {
-                    return <ProjectItem key={aProject.id} data={aProject} />;
+                {projectSortByDate.map((aProject, index) => {
+                    return <ProjectItem key={aProject.id} data={aProject} img={imgThumbnail[index].img} />;
                 })}
             </div>
         </>
@@ -42,14 +50,14 @@ async function getData() {
             accept: 'application/json',
             'Notion-Version': '2022-02-22',
             'content-type': 'application/json',
-            authorization: `Bearer ${TOKEN}`,
+            authorization: `Bearer ${NOTION_TOKEN}`,
         },
         body: JSON.stringify({
             page_size: 100,
         }),
     };
 
-    const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options);
+    const res = await fetch(`https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query`, options);
 
     const projects = await res.json();
 

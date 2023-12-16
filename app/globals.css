@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply z-10;
+}
+
 .bg-primary {
-    @apply bg-white dark:bg-slate-800 /* 다크 모드에서의 배경색을 지정 */;
+    @apply bg-slate-100 dark:bg-slate-800 /* 다크 모드에서의 배경색을 지정 */;
 }
 
 .btn-project {
@@ -11,7 +15,7 @@
 }
 
 .project-card {
-    @apply flex flex-col m-3 rounded-xl 
+    @apply bg-white dark:bg-slate-800 flex flex-col m-3 rounded-xl 
             transition duration-300 transform border border-gray-300
             hover:scale-105
             hover:shadow-lg
