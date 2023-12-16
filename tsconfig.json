@@ -33,7 +33,8 @@
         "app/projects_/page.js",
         "components/projects/project-item.tsx",
         "public/svg/githubSVG.js",
-        "app/layout.js"
+        "app/layout.js",
+        "components/photoCard/page.jsx"
     ],
     "exclude": ["node_modules"]
 }
