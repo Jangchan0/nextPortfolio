@@ -10,7 +10,7 @@ export default function Home() {
             <WelcomeToast />
             <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
                 <Background />
-                <div className="container mx-auto  px-5 py-24 md:flex-row  items-center relative">
+                <div className="container mx-auto  px-5 py-24 flex-row  items-center relative">
                     <Hero />
                     <Projects />
                     <Contact />

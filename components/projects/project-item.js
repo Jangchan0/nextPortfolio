@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 export default function ProjectItem({ data, img }) {
     const title = data.properties.이름.title[0]?.text.content;
-    const progressPeriod = `${data.properties[`진행 기간`].date.start} ~ ${data.properties[`진행 기간`].date.end}`;
+    const progressPeriod = `${data.properties[`진행 기간`].date.start} ~ ${
+        data.properties[`진행 기간`].date.end
+    }`;
     const discriptionList = data.properties[`한 줄 소개`].rich_text;
     const githubLink = data.properties.Github.url;
     const skillList = data.properties.Skills.multi_select;
@@ -39,7 +41,7 @@ export default function ProjectItem({ data, img }) {
                     </Link>
                 </div>
             </div>
-            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-scroll cursor-default">
+            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-hidden cursor-default">
                 {skillList.map((skill, i) => {
                     return (
                         <h1

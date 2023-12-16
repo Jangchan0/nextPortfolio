@@ -31,10 +31,13 @@ class PhotoCard extends Component {
 
         const backgroundPosition =
             window.innerWidth >= 1240 ? `${offsetX / 2 + offsetY / 2}px` : `${offsetX + offsetY}px`;
-        const opacity = offsetX / 200;
+        const opacity = offsetX / 700;
         const brightness = 1.2;
 
-        const overlayStyle = { backgroundPosition, filter: `opacity(${opacity}) brightness(${brightness})` };
+        const overlayStyle = {
+            backgroundPosition,
+            filter: `opacity(${opacity}) brightness(${brightness})`,
+        };
 
         this.setState({
             perspectiveSize,
@@ -58,13 +61,21 @@ class PhotoCard extends Component {
             isMouseOver: false,
         });
     };
+
+    // 클라이언트사이드 렌더링 (모바일 & 데스크탑 확인을 위한 CSR)
     componentDidMount() {
-        // Check if the component is mounted on the client side
         this.setState({ isClientSide: true });
     }
 
     render() {
-        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver, isClientSide } = this.state;
+        const {
+            rotateAngleY,
+            rotateAngleX,
+            overlayStyle,
+            perspectiveSize,
+            isMouseOver,
+            isClientSide,
+        } = this.state;
 
         return (
             <>
@@ -74,24 +85,35 @@ class PhotoCard extends Component {
                     onMouseEnter={this.handleMouseEnter}
                     onMouseLeave={this.handleMouseLeave}
                     style={{
-                        animation: isClientSide && window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
+                        animation:
+                            isClientSide && window.innerWidth <= 800
+                                ? 'rotateAnimation 8s infinite'
+                                : 'none',
                     }}
                 >
                     <div
-                        className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-80 mix-blend-color-dodge rounded-2xl  ${
+                        className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-40 mix-blend-color-dodge rounded-2xl  ${
                             isMouseOver ? '' : 'transition-all'
                         }`}
                         style={{
                             ...overlayStyle,
-                            transform: `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`,
+                            transform:
+                                isClientSide && window.innerWidth >= 800
+                                    ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
+                                    : 'perspective(500px)',
                         }}
                     ></div>
                     <Image
-                        className={`bg-cover w-full h-full shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
+                        className={`bg-cover w-full h-full shadow-xl ${
+                            isMouseOver ? '' : 'transition-all'
+                        }`}
                         src={photoCard}
                         alt="장찬영 소개 카드"
                         style={{
-                            transform: `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`,
+                            transform:
+                                isClientSide && window.innerWidth >= 800
+                                    ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
+                                    : 'perspective(500px)',
                         }}
                     />
                 </div>
