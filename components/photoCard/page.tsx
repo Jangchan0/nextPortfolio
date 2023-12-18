@@ -68,14 +68,7 @@ class PhotoCard extends Component {
     }
 
     render() {
-        const {
-            rotateAngleY,
-            rotateAngleX,
-            overlayStyle,
-            perspectiveSize,
-            isMouseOver,
-            isClientSide,
-        } = this.state;
+        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver, isClientSide } = this.state;
 
         return (
             <>
@@ -85,10 +78,7 @@ class PhotoCard extends Component {
                     onMouseEnter={this.handleMouseEnter}
                     onMouseLeave={this.handleMouseLeave}
                     style={{
-                        animation:
-                            isClientSide && window.innerWidth <= 800
-                                ? 'rotateAnimation 8s infinite'
-                                : 'none',
+                        animation: isClientSide && window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
                     }}
                 >
                     <div
@@ -104,9 +94,7 @@ class PhotoCard extends Component {
                         }}
                     ></div>
                     <Image
-                        className={`bg-cover w-full h-full shadow-xl ${
-                            isMouseOver ? '' : 'transition-all'
-                        }`}
+                        className={`bg-cover w-full h-full shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
                         src={photoCard}
                         alt="장찬영 소개 카드"
                         style={{
