@@ -72,8 +72,8 @@ function Contact() {
     return (
         <>
             <ToastContainer />
-            <div className="md:flex sm:flex-row sm:item-center justify-center item-center bg-primary rounded-md py-10 cursor-default">
-                <div className="contactImg md:w-1/2 sm:w-full shadow-lg text-center">
+            <div className="lg:flex md:flex sm:flex-row sm:item-center justify-center item-center bg-primary rounded-md py-10 cursor-default">
+                <div className="contactImg lg:w-2/5 md:w-1/2 sm:w-full shadow-lg text-center">
                     <h2 className="text-3xl font-bold sm:text-6xl justify-center flex my-9">Contact</h2>
                     <p className="text-md font-bold sm:text-md justify-center my-9 ">thank you!</p>
                     <div className="developerImg flex justify-center mb-6 transition-transform  hover:rotate-[-2deg]">
@@ -86,7 +86,7 @@ function Contact() {
                         />
                     </div>
                 </div>
-                <div className="contactContants md:w-1/2 sm:w-full flex">
+                <div className="contactContants lg:w-3/5 md:w-1/2 sm:w-full flex">
                     <div className="container mx-auto p-4 flex justify-center items-center">
                         <form className="container max-w-md flex flex-col" ref={form} onSubmit={sendEmail}>
                             <div className="mb-8">
