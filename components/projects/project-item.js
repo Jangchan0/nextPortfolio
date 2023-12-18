@@ -3,9 +3,7 @@ import Link from 'next/link';
 
 export default function ProjectItem({ data, img }) {
     const title = data.properties.이름.title[0]?.text.content;
-    const progressPeriod = `${data.properties[`진행 기간`].date.start} ~ ${
-        data.properties[`진행 기간`].date.end
-    }`;
+    const progressPeriod = `${data.properties[`진행 기간`].date.start} ~ ${data.properties[`진행 기간`].date.end}`;
     const discriptionList = data.properties[`한 줄 소개`].rich_text;
     const githubLink = data.properties.Github.url;
     const skillList = data.properties.Skills.multi_select;
@@ -15,18 +13,22 @@ export default function ProjectItem({ data, img }) {
 
     return (
         <div className="project-card w-[45vw] min-w-[370px] p-3 ">
-            <Image
-                className="rounded-xl "
-                src={img}
-                alt="cover image"
-                width={500}
-                height={300}
-                layout="responsive"
-                objectFit="cover"
-                quality={100}
-            />
+            <div className="cursor-pointer">
+                <Link href={notionDetail} passHref>
+                    <Image
+                        className="rounded-xl "
+                        src={img}
+                        alt="cover image"
+                        width={500}
+                        height={300}
+                        layout="responsive"
+                        objectFit="cover"
+                        quality={100}
+                    />
+                </Link>
+            </div>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between ">
                 <div className="p-4 flex flex-col ">
                     <h1 className="text-2xl font-bold">{title}</h1>
                     <h3 className=" mt-4 text-lg">{discription}</h3>
