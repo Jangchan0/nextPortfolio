@@ -27,9 +27,9 @@ export default async function Projects() {
 
     return (
         <>
-            <h1 className="text-4xl font-bold sm:text-6xl justify-center flex my-9">
-                My projects <span className="pl-4 text-blue-500">{data.results.length}</span>
-            </h1>
+            <div className="flex justify-center">
+                <h1 className=" text-4xl font-bold sm:text-6xl text-center my-9">🔗 My projects</h1>
+            </div>
 
             <div
                 className="grid grid-cols-1 md:grid-cols-1 md:gap-1 gap-x-3 gap-y-25 m-6 py-10 "

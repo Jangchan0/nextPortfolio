@@ -12,7 +12,7 @@ export default function ProjectItem({ data, img }) {
     const discription = discriptionList.map((item) => item.plain_text);
 
     return (
-        <div className="project-card w-[45vw] min-w-[370px] p-3 ">
+        <div className="project-card lg:w-[45vw] lg:min-w-[370px] md:w-[45vw] sm:w-[90vw] sm:min-w-[90vw] p-3 ">
             <div className="cursor-pointer">
                 <Link href={notionDetail} passHref>
                     <Image
@@ -30,20 +30,20 @@ export default function ProjectItem({ data, img }) {
 
             <div className="flex justify-between ">
                 <div className="p-4 flex flex-col ">
-                    <h1 className="text-2xl font-bold">{title}</h1>
-                    <h3 className=" mt-4 text-lg">{discription}</h3>
-                    <p className="my-2 cursor-default"> 작업기간: {progressPeriod}</p>
+                    <h1 className="lg:text-2xl md:text-xl sm:text-lg font-bold">{title}</h1>
+                    <h3 className=" mt-4 lg:text-lg md:text-lg sm:text-sm ">{discription}</h3>
                 </div>
-                <div className="flex flex-col gap-4 p-4 text-center items-left">
+                <div className="flex flex-col gap-4 py-4  items-left sm:w-[30%]">
                     <Link href={githubLink} passHref>
-                        <button className="btn-project  ">Github</button>
+                        <button className="btn-project justify-center">Github</button>
                     </Link>
                     <Link href={notionDetail} passHref>
-                        <button className="btn-project">Info</button>
+                        <button className="btn-project justify-center">Info</button>
                     </Link>
                 </div>
             </div>
-            <div className="flex items-start p-4 mt-2 border-t  border-gray-300 dark:border-gray-200/50 overflow-hidden cursor-default">
+            <p className=" p-4 my-2 lg:text-lg md:text-lg sm:text-sm cursor-default"> 작업기간: {progressPeriod}</p>
+            <div className="flex items-start p-4 mt-2 border-t overflow-x-scroll border-gray-300 dark:border-gray-200/50 overflow-hidden cursor-default">
                 {skillList.map((skill, i) => {
                     return (
                         <h1
