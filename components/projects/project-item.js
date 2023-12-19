@@ -12,7 +12,7 @@ export default function ProjectItem({ data, img }) {
     const discription = discriptionList.map((item) => item.plain_text);
 
     return (
-        <div className="project-card lg:w-[45vw] lg:min-w-[370px] md:w-[45vw] sm:w-[90vw] sm:min-w-[90vw] p-3 ">
+        <div className="project-card lg:w-[45vw] lg:min-w-[370px] md:w-[45vw] sm:w-[90vw] sm:min-w-[90vw] lg:p-6 md:p-3 sm:p-3">
             <div className="cursor-pointer">
                 <Link href={notionDetail} passHref>
                     <Image
@@ -31,7 +31,7 @@ export default function ProjectItem({ data, img }) {
             <div className="flex justify-between ">
                 <div className="p-4 flex flex-col ">
                     <h1 className="lg:text-2xl md:text-xl sm:text-lg font-bold">{title}</h1>
-                    <h3 className=" mt-4 lg:text-lg md:text-lg sm:text-sm ">{discription}</h3>
+                    <h3 className=" mt-4 lg:text-lg md:text-lg sm:text-xs ">{discription}</h3>
                 </div>
                 <div className="flex flex-col gap-4 py-4  items-left sm:w-[30%]">
                     <Link href={githubLink} passHref>
@@ -42,8 +42,8 @@ export default function ProjectItem({ data, img }) {
                     </Link>
                 </div>
             </div>
-            <p className=" p-4 my-2 lg:text-lg md:text-lg sm:text-sm cursor-default"> 작업기간: {progressPeriod}</p>
-            <div className="flex items-start p-4 mt-2 border-t overflow-x-scroll border-gray-300 dark:border-gray-200/50 overflow-hidden cursor-default">
+            <p className=" p-4 my-2 lg:text-lg md:text-lg sm:text-xs cursor-default"> 작업기간: {progressPeriod}</p>
+            <div className="flex items-start p-4 mt-2 border-t overflow-auto hover:overflow-scroll border-gray-300 dark:border-gray-200/50 cursor-default">
                 {skillList.map((skill, i) => {
                     return (
                         <h1
@@ -51,14 +51,13 @@ export default function ProjectItem({ data, img }) {
                             className="
                                 flex
                                 items-start
-                                
                                 px-2
                                 py-1
                                 mr-2
                                 rounded-md
                                 bg-sky-200
                                 dark:bg-sky-700
-                                w-30
+                                lg:text-lg md:text-lg sm:text-xs
                                 "
                         >
                             {skill.name}

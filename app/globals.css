@@ -11,7 +11,7 @@
 }
 
 .btn-project {
-    @apply inline-flex w-full text-center text-white hover:text-white dark:text-white bg-indigo-500 border-0 py-2 lg:px-6 md:px-6 sm:px-2 focus:outline-none hover:bg-indigo-600 rounded lg:text-lg md:text-lg sm:text-sm;
+    @apply inline-flex w-full  text-white hover:text-white dark:text-white bg-indigo-500 border-0 py-2 lg:px-6 md:px-6 sm:px-2 focus:outline-none hover:bg-indigo-600 rounded lg:text-lg md:text-lg sm:text-xs;
 }
 
 .project-card {
