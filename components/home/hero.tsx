@@ -2,6 +2,7 @@
 import TypingAnimation from './TypingAnimation';
 import { useRef } from 'react';
 import PhotoCard from '../photoCard/page';
+import Computer from '../three/Computer';
 
 function Hero() {
     const navHeight = 90;

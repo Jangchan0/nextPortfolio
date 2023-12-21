@@ -1,3 +1,5 @@
+//projects_ 페이지 (현재 컴포넌트화)
+
 import { NOTION_TOKEN, NOTION_DATABASE_ID } from '../../config/index';
 import ProjectItem from '../../components/projects/project-item';
 
