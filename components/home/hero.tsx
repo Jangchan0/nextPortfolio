@@ -9,7 +9,7 @@ function Hero() {
     const onMoveBox = () => {
         element.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-    let typingText = '주니어 프론트엔드 개발자 장찬영입니다.';
+    let typingText = '프론트엔드 개발자 장찬영입니다.';
 
     return (
         <>
