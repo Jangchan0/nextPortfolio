@@ -68,42 +68,59 @@ class PhotoCard extends Component {
     }
 
     render() {
-        const { rotateAngleY, rotateAngleX, overlayStyle, perspectiveSize, isMouseOver, isClientSide } = this.state;
+        const {
+            rotateAngleY,
+            rotateAngleX,
+            overlayStyle,
+            perspectiveSize,
+            isMouseOver,
+            isClientSide,
+        } = this.state;
 
         return (
             <>
-                <div
-                    className=" cardContainer lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative "
-                    onMouseMove={this.handleMouseMove}
-                    onMouseEnter={this.handleMouseEnter}
-                    onMouseLeave={this.handleMouseLeave}
-                    style={{
-                        animation: isClientSide && window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
-                    }}
-                >
+                <div className="flex flex-col items-center">
                     <div
-                        className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-40 mix-blend-color-dodge rounded-2xl  ${
-                            isMouseOver ? '' : 'transition-all'
-                        }`}
+                        className=" cardContainer lg:w-[330px] lg:h-[464px] md:w-[35vw] md:h-[60vh] md:mt-0 sm:w-[40vw] sm:h-[35vh] sm:mt-12 relative "
+                        onMouseMove={this.handleMouseMove}
+                        onMouseEnter={this.handleMouseEnter}
+                        onMouseLeave={this.handleMouseLeave}
                         style={{
-                            ...overlayStyle,
-                            transform:
-                                isClientSide && window.innerWidth >= 800
-                                    ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
-                                    : 'perspective(500px)',
+                            animation:
+                                isClientSide && window.innerWidth <= 800
+                                    ? 'rotateAnimation 8s infinite'
+                                    : 'none',
                         }}
-                    ></div>
-                    <Image
-                        className={`bg-cover w-full h-full shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
-                        src={photoCard}
-                        alt="장찬영 소개 카드"
-                        style={{
-                            transform:
-                                isClientSide && window.innerWidth >= 800
-                                    ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
-                                    : 'perspective(500px)',
-                        }}
-                    />
+                    >
+                        <div
+                            className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-40 mix-blend-color-dodge rounded-2xl  ${
+                                isMouseOver ? '' : 'transition-all'
+                            }`}
+                            style={{
+                                ...overlayStyle,
+                                transform:
+                                    isClientSide && window.innerWidth >= 800
+                                        ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
+                                        : 'perspective(500px)',
+                            }}
+                        ></div>
+                        <Image
+                            className={`bg-cover w-full h-full shadow-xl ${
+                                isMouseOver ? '' : 'transition-all'
+                            }`}
+                            src={photoCard}
+                            alt="장찬영 소개 카드"
+                            style={{
+                                transform:
+                                    isClientSide && window.innerWidth >= 800
+                                        ? `perspective(${perspectiveSize}) rotateY(${rotateAngleY}deg) rotateX(${rotateAngleX}deg)`
+                                        : 'perspective(500px)',
+                            }}
+                        />
+                    </div>
+                    {window.innerWidth >= 800 ? (
+                        <h3 className="text-2xl mt-4 z-0">Hover me!</h3>
+                    ) : null}
                 </div>
             </>
         );
