@@ -34,10 +34,10 @@ export default function ProjectItem({ data, img }) {
                     <h3 className=" mt-4 lg:text-lg md:text-lg sm:text-xs ">{discription}</h3>
                 </div>
                 <div className="flex flex-col gap-4 py-4  items-left sm:w-[30%]">
-                    <Link href={githubLink} passHref>
+                    <Link href={githubLink}>
                         <button className="btn-project justify-center">Github</button>
                     </Link>
-                    <Link href={notionDetail} passHref>
+                    <Link href={notionDetail}>
                         <button className="btn-project justify-center">Info</button>
                     </Link>
                 </div>
