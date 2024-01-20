@@ -14,7 +14,7 @@ export default function ProjectItem({ data, img }) {
     return (
         <div className="project-card lg:w-[45vw] lg:min-w-[370px] md:w-[45vw] sm:w-[90vw] sm:min-w-[90vw] lg:p-6 md:p-3 sm:p-3">
             <div className="cursor-pointer">
-                <Link href={notionDetail} passHref>
+                <Link href={notionDetail}>
                     <Image
                         className="rounded-xl "
                         src={img}
