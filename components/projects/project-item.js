@@ -14,7 +14,7 @@ export default function ProjectItem({ data, img }) {
     return (
         <div className="project-card lg:w-[45vw] lg:min-w-[370px] md:w-[45vw] sm:w-[90vw] sm:min-w-[90vw] lg:p-6 md:p-3 sm:p-3">
             <div className="cursor-pointer">
-                <Link href={notionDetail}>
+                <Link href={notionDetail} rel="noopener noreferrer" target="_blank">
                     <Image
                         className="rounded-xl "
                         src={img}
@@ -34,10 +34,10 @@ export default function ProjectItem({ data, img }) {
                     <h3 className=" mt-4 lg:text-lg md:text-lg sm:text-xs ">{discription}</h3>
                 </div>
                 <div className="flex flex-col gap-4 py-4  items-left sm:w-[30%]">
-                    <Link href={githubLink}>
+                    <Link href={githubLink} rel="noopener noreferrer" target="_blank">
                         <button className="btn-project justify-center">Github</button>
                     </Link>
-                    <Link href={notionDetail}>
+                    <Link href={notionDetail} rel="noopener noreferrer" target="_blank">
                         <button className="btn-project justify-center">Info</button>
                     </Link>
                 </div>
