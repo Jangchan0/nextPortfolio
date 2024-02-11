@@ -81,6 +81,7 @@ class PhotoCard extends Component {
                         animation: isClientSide && window.innerWidth <= 800 ? 'rotateAnimation 8s infinite' : 'none',
                     }}
                 >
+                    <h3 className="w-full text-center mb-5 text-2xl italic font-bold cursor-default">↓ Hover me!</h3>
                     <div
                         className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-40 mix-blend-color-dodge rounded-2xl  ${
                             isMouseOver ? '' : 'transition-all'
