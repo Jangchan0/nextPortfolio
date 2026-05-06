@@ -4,23 +4,40 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-const PhoneScreenshotFrame = ({ image, title }) => {
-    if (!image?.src) {
+const PhoneScreenshotFrame = ({ image, images, title }) => {
+    const screenshots = images?.length ? images : image?.src ? [image] : [];
+
+    if (!screenshots.length) {
         return null;
     }
+
+    const isCarousel = screenshots.length > 1;
 
     return (
         <div className="holo-phone-frame mx-auto">
             <div className="holo-phone-speaker" />
             <div className="holo-phone-screen">
-                <Image
-                    src={image.src}
-                    alt={image.alt ?? `${title} 화면 이미지`}
-                    fill
-                    sizes="(max-width: 768px) 56vw, 220px"
-                    className="object-contain"
-                    priority={false}
-                />
+                <div
+                    className={`holo-phone-screen-track ${isCarousel ? 'holo-phone-screen-track--carousel' : ''}`}
+                    style={{ width: `${screenshots.length * 100}%` }}
+                >
+                    {screenshots.map((screenshot, index) => (
+                        <div
+                            key={`${screenshot.src}-${index}`}
+                            className="holo-phone-screen-slide"
+                            style={{ width: `${100 / screenshots.length}%` }}
+                        >
+                            <Image
+                                src={screenshot.src}
+                                alt={screenshot.alt ?? `${title} 화면 이미지 ${index + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 56vw, 220px"
+                                className="object-contain"
+                                priority={false}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
@@ -103,7 +120,7 @@ export default function ProjectDetailModal({ isOpen, project, onClose }) {
         return null;
     }
 
-    const hasImage = Boolean(project.image?.src);
+    const hasImage = Boolean(project.image?.src || project.images?.length);
 
     return createPortal(
         <div className="hologram-backdrop" onMouseDown={onClose}>
@@ -140,7 +157,9 @@ export default function ProjectDetailModal({ isOpen, project, onClose }) {
                 <div className="hologram-panel-scroll">
                     <div className="hologram-panel-content">
                         <div className={`grid gap-8 lg:items-start ${hasImage ? 'lg:grid-cols-[240px_minmax(0,1fr)]' : ''}`}>
-                            {hasImage && <PhoneScreenshotFrame image={project.image} title={project.title} />}
+                            {hasImage && (
+                                <PhoneScreenshotFrame image={project.image} images={project.images} title={project.title} />
+                            )}
 
                             <div className="min-w-0">
                                 <div className="flex flex-wrap items-center gap-2 pr-20">

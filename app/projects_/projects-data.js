@@ -142,6 +142,16 @@ export const projectGroups = [
                 title: '꾸미기/테마 WebView 제품화 및 운영',
                 period: '2024.12 ~ 2026.04',
                 role: '꾸미기/WebView 담당',
+                images: [
+                    {
+                        src: '/project-screenshots/roubit-customizing-costume.png',
+                        alt: 'Roubit 꾸미기 의상 장착 화면',
+                    },
+                    {
+                        src: '/project-screenshots/roubit-customizing-room.png',
+                        alt: 'Roubit 꾸미기 방 테마 화면',
+                    },
+                ],
                 screenLabel: '꾸미기/테마',
                 screenMetric: '방 12 + 의상 4',
                 summary:

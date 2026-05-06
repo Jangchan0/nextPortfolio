@@ -267,6 +267,18 @@ p {
     border-radius: 24px;
 }
 
+.holo-phone-screen-track {
+    @apply flex h-full;
+}
+
+.holo-phone-screen-track--carousel {
+    animation: phone-screenshot-swipe 10s ease-in-out infinite;
+}
+
+.holo-phone-screen-slide {
+    @apply relative h-full shrink-0;
+}
+
 .holo-phone-screen::after {
     content: '';
     @apply pointer-events-none absolute inset-0;
@@ -486,6 +498,20 @@ p {
     }
 }
 
+@keyframes phone-screenshot-swipe {
+    0%,
+    42% {
+        transform: translateX(0);
+    }
+    50%,
+    92% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 @keyframes hologram-panel-in {
     0% {
         opacity: 0;
@@ -650,7 +676,8 @@ p {
     .contact-title,
     .hologram-percent-glitch,
     .hologram-percent-glitch::before,
-    .hologram-percent-glitch::after {
+    .hologram-percent-glitch::after,
+    .holo-phone-screen-track--carousel {
         animation: none !important;
     }
 }
