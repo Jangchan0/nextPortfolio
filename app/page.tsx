@@ -1,5 +1,4 @@
 import Hero from '../components/home/hero';
-import Projects from './projects_/page';
 import Contact from '../components/contact/page';
 import WelcomeToast from '../components/welcome/page';
 import Background from '../components/three/Background';
@@ -8,12 +7,14 @@ export default function Home() {
     return (
         <div>
             <WelcomeToast />
-            <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+            <section className="pointer-events-none min-h-[610vh] text-gray-600 body-font">
                 <Background />
-                <div className="container mx-auto  px-5 py-24 flex-row  items-center relative">
+                <div className="relative z-[2] pointer-events-none">
                     <Hero />
-                    <Projects />
-                    <Contact />
+                    <div className="h-[315vh] sm:h-[335vh] lg:h-[385vh]" aria-hidden="true" />
+                    <div className="container mx-auto px-5 pb-24 pointer-events-auto">
+                        <Contact />
+                    </div>
                 </div>
             </section>
         </div>
