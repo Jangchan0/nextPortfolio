@@ -137,6 +137,39 @@ export const projectGroups = [
                 ],
                 skills: ['GraphQL', 'TanStack Query', 'TypeScript', 'Sentry', 'React Native', 'Next.js'],
             },
+            {
+                slug: 'roubit-theme-customizing',
+                title: '꾸미기/테마 WebView 제품화 및 운영',
+                period: '2024.12 ~ 2026.04',
+                role: '꾸미기/WebView 담당',
+                screenLabel: '꾸미기/테마',
+                screenMetric: '방 12 + 의상 4',
+                summary:
+                    '루빗 방 꾸미기, 의상 장착, 테마 상세, 장바구니 구매 흐름을 WebView와 React Native 앱 경계에서 운영했습니다.',
+                metrics: [
+                    { label: 'Room categories', value: '12개' },
+                    { label: 'Costume slots', value: '4개' },
+                    { label: 'Locales', value: '8개 언어' },
+                ],
+                problem:
+                    '꾸미기는 단순 아이템 목록이 아니라 방 미리보기, 의상 장착, 테마 상세, 구매 가능 여부, 장바구니, 네이티브 화면 전환이 하나의 흐름으로 이어져야 했습니다.',
+                strategy:
+                    '서버에 저장된 장착 상태와 사용자가 임시로 선택한 미리보기 상태를 분리하고, WebView 내부 상태와 React Native 네비게이션을 PostMessage 계약으로 연결했습니다.',
+                implementation: [
+                    'focusedRoomItems 12개 카테고리와 focusedCostumeItems 4개 슬롯을 Zustand로 분리해, 저장 전 미리보기 상태가 실제 장착 상태를 덮어쓰지 않도록 관리했습니다.',
+                    'getUserRoom, getThemeAndFurniture, getCostumes, equipItems GraphQL 흐름을 queryFn 레이어로 분리해 방/의상/테마 상세 데이터를 화면별로 재사용했습니다.',
+                    'wall_paper, floor, interior item을 RoomPreview 단위로 나누고 GetRoomPreviewItemSize/Position 유틸로 아이템 배치 규칙을 계산해 테마별 방 구성을 안정적으로 렌더링했습니다.',
+                    'checkPurchaseableItems, updateCartSelection, completePurchaseWithCartSession, resetCachedItems 흐름으로 장바구니 구매 가능 여부와 구매 완료 상태를 화면 상태와 연결했습니다.',
+                    'Customizing, ThemeDetail WebView URL에 token/productId를 주입하고 navToCustomizing, navToChallengeThemeDetail, customizingSaved PostMessage로 네이티브 스택과 저장 피드백을 연결했습니다.',
+                    '시즌 테마 asset map과 8개 언어 번역 리소스를 함께 추가해 신규 테마가 홈/꾸미기/테마 상세 화면에 일관되게 노출되도록 운영했습니다.',
+                ],
+                result: [
+                    '사용자가 구매 또는 저장 전에 방과 의상을 미리 조합해 볼 수 있는 꾸미기 경험을 만들었습니다.',
+                    '방 12개 카테고리와 의상 4개 슬롯을 같은 저장/구매 흐름 안에서 다루며 복잡한 상태 전이를 화면별로 분리했습니다.',
+                    '시즌 테마와 다국어 리소스를 반복적으로 추가할 수 있는 구조를 마련해 콘텐츠 운영 비용을 낮췄습니다.',
+                ],
+                skills: ['Next.js', 'React', 'TypeScript', 'React Native WebView', 'GraphQL', 'Zustand', 'TanStack Query'],
+            },
         ],
     },
     {

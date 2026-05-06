@@ -16,6 +16,7 @@ const SCREEN_TARGETS = [
     'Screen B.002_107',
     'Screen C.002_106',
     'Screen D.001_105',
+    'Screen A.001_104',
 ];
 
 const SCREEN_PROJECT_SLUGS = [
@@ -27,6 +28,7 @@ const SCREEN_PROJECT_SLUGS = [
     'roubit-fastlane-release',
     'loody-hardware-otp-sse',
     'loody-zero-to-one',
+    'roubit-theme-customizing',
 ];
 
 const SCREEN_OVERLAY_CONFIG = {
@@ -314,6 +316,94 @@ const createRadialShadowTexture = () => {
     return texture;
 };
 
+const createCyberGroundTexture = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 1024;
+
+    const context = canvas.getContext('2d');
+    const baseGradient = context.createLinearGradient(0, 0, 0, canvas.height);
+    baseGradient.addColorStop(0, '#101827');
+    baseGradient.addColorStop(0.48, '#071422');
+    baseGradient.addColorStop(1, '#020617');
+    context.fillStyle = baseGradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    const cyanGlow = context.createRadialGradient(280, 470, 20, 280, 470, 620);
+    cyanGlow.addColorStop(0, 'rgba(34, 211, 238, 0.22)');
+    cyanGlow.addColorStop(0.42, 'rgba(14, 116, 144, 0.12)');
+    cyanGlow.addColorStop(1, 'rgba(14, 116, 144, 0)');
+    context.fillStyle = cyanGlow;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    const violetGlow = context.createRadialGradient(820, 360, 20, 820, 360, 560);
+    violetGlow.addColorStop(0, 'rgba(168, 85, 247, 0.16)');
+    violetGlow.addColorStop(0.5, 'rgba(79, 70, 229, 0.1)');
+    violetGlow.addColorStop(1, 'rgba(79, 70, 229, 0)');
+    context.fillStyle = violetGlow;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    context.globalAlpha = 0.28;
+    context.lineWidth = 2;
+    context.strokeStyle = 'rgba(103, 232, 249, 0.7)';
+    for (let x = -canvas.width; x <= canvas.width * 2; x += 96) {
+        context.beginPath();
+        context.moveTo(x, 0);
+        context.lineTo(x + 420, canvas.height);
+        context.stroke();
+    }
+
+    context.strokeStyle = 'rgba(167, 139, 250, 0.5)';
+    for (let x = -canvas.width; x <= canvas.width * 2; x += 128) {
+        context.beginPath();
+        context.moveTo(x + 360, 0);
+        context.lineTo(x, canvas.height);
+        context.stroke();
+    }
+
+    context.strokeStyle = 'rgba(34, 211, 238, 0.42)';
+    for (let y = 0; y <= canvas.height; y += 86) {
+        context.beginPath();
+        context.moveTo(0, y);
+        context.lineTo(canvas.width, y);
+        context.stroke();
+    }
+
+    context.globalAlpha = 1;
+    const horizon = context.createLinearGradient(0, 0, canvas.width, 0);
+    horizon.addColorStop(0, 'rgba(34, 211, 238, 0)');
+    horizon.addColorStop(0.5, 'rgba(34, 211, 238, 0.55)');
+    horizon.addColorStop(1, 'rgba(168, 85, 247, 0)');
+    context.fillStyle = horizon;
+    context.fillRect(0, 504, canvas.width, 4);
+
+    const vignette = context.createRadialGradient(512, 512, 180, 512, 512, 720);
+    vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
+    vignette.addColorStop(1, 'rgba(2, 6, 23, 0.42)');
+    context.fillStyle = vignette;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(2.2, 1.4);
+    texture.needsUpdate = true;
+
+    return texture;
+};
+
+const createCyberGroundMaterial = (opacity = 0.88) =>
+    new THREE.MeshBasicMaterial({
+        map: createCyberGroundTexture(),
+        color: 0xffffff,
+        transparent: true,
+        opacity,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        toneMapped: false,
+    });
+
 const setLineOpacity = (material, opacity) => {
     const materials = Array.isArray(material) ? material : [material];
 
@@ -321,6 +411,7 @@ const setLineOpacity = (material, opacity) => {
         item.transparent = true;
         item.opacity = opacity;
         item.depthWrite = false;
+        item.blending = THREE.AdditiveBlending;
     });
 };
 
@@ -330,13 +421,7 @@ const createNeonFloor = () => {
 
     const floor = new THREE.Mesh(
         new THREE.PlaneGeometry(34, 20),
-        new THREE.MeshBasicMaterial({
-            color: 0x020617,
-            transparent: true,
-            opacity: 0.46,
-            side: THREE.DoubleSide,
-            depthWrite: false,
-        }),
+        createCyberGroundMaterial(0.72),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.set(0, -1.42, -0.7);
@@ -406,6 +491,30 @@ const createNeonFloor = () => {
     group.add(violetRail);
 
     return group;
+};
+
+const styleImportedGroundPlane = (model) => {
+    const groundNode = getObjectByLooseName(model, 'Plane_5');
+
+    if (!groundNode) {
+        return;
+    }
+
+    groundNode.traverse((child) => {
+        if (!child.isMesh) {
+            return;
+        }
+
+        if (Array.isArray(child.material)) {
+            child.material.forEach(disposeMaterial);
+        } else if (child.material) {
+            disposeMaterial(child.material);
+        }
+
+        child.material = createCyberGroundMaterial(0.82);
+        child.renderOrder = -6;
+        child.receiveShadow = false;
+    });
 };
 
 const createScreenOverlay = (screenMesh, project, options = {}) => {
@@ -849,6 +958,7 @@ const BackgroundThree = () => {
 
             const model = gltf.scene;
             scene.add(model);
+            styleImportedGroundPlane(model);
 
             SCREEN_TARGETS.forEach((nodeName, index) => {
                 try {
