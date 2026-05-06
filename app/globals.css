@@ -45,3 +45,516 @@ a {
 p {
     @apply text-slate-500 dark:text-slate-400;
 }
+
+.cyber-scene-atmosphere {
+    @apply pointer-events-none fixed inset-0 z-0 overflow-hidden;
+    background:
+        radial-gradient(circle at 72% 18%, rgba(99, 102, 241, 0.2), transparent 30%),
+        radial-gradient(circle at 23% 28%, rgba(34, 211, 238, 0.16), transparent 32%),
+        radial-gradient(circle at 50% 105%, rgba(14, 116, 144, 0.24), transparent 36%),
+        linear-gradient(180deg, #0f172a 0%, #08111f 44%, #020617 100%);
+}
+
+.cyber-scene-atmosphere::before {
+    content: '';
+    @apply absolute inset-0;
+    background:
+        linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.08), transparent),
+        repeating-linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.035) 0,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px,
+            transparent 8px
+        );
+    animation: cyber-atmosphere-scan 7200ms linear infinite;
+    mix-blend-mode: screen;
+    opacity: 0.24;
+}
+
+.cyber-scene-atmosphere::after {
+    content: '';
+    @apply absolute inset-x-[-12%] top-[18%] h-px;
+    animation: cyber-atmosphere-sweep 6200ms ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.48), rgba(168, 85, 247, 0.46), transparent);
+    box-shadow:
+        0 0 18px rgba(34, 211, 238, 0.38),
+        0 0 34px rgba(129, 140, 248, 0.22);
+    opacity: 0.7;
+}
+
+.hero-monitor-hint {
+    @apply relative flex max-w-[94vw] items-center gap-4 rounded-full border px-6 py-4 text-left sm:px-5 sm:py-3.5;
+    animation: hero-hint-float 2800ms ease-in-out infinite;
+    background:
+        linear-gradient(135deg, rgba(2, 6, 23, 0.82), rgba(15, 23, 42, 0.7)),
+        radial-gradient(circle at 0% 50%, rgba(34, 211, 238, 0.2), transparent 34%);
+    border-color: rgba(103, 232, 249, 0.42);
+    box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.12) inset,
+        0 0 24px rgba(34, 211, 238, 0.14);
+}
+
+.hero-monitor-hint__signal {
+    @apply h-3.5 w-3.5 shrink-0 rounded-full bg-cyan-300 sm:h-3 sm:w-3;
+    animation: hero-hint-pulse 1400ms ease-in-out infinite;
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.88);
+}
+
+.hero-monitor-hint__eyebrow {
+    @apply text-xs font-black uppercase tracking-[0.22em] text-cyan-200 sm:text-[10px];
+}
+
+.hero-monitor-hint__text {
+    @apply mt-1 break-keep text-base font-black text-slate-50 sm:text-sm;
+}
+
+.hero-monitor-hint__chevron {
+    @apply ml-1 text-2xl font-black text-cyan-200 sm:text-xl;
+    animation: hero-hint-chevron 1200ms ease-in-out infinite;
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
+}
+
+.hologram-backdrop {
+    @apply pointer-events-auto fixed inset-0 z-[90] flex items-center justify-center px-4 py-8 backdrop-blur-md;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(34, 211, 238, 0.24), transparent 34%),
+        rgba(2, 6, 23, 0.78);
+}
+
+.hologram-panel {
+    @apply relative max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-lg border p-5 text-slate-100 sm:p-7;
+    animation: hologram-panel-in 360ms ease-out both, hologram-flicker 1800ms steps(2, end) 1;
+    background:
+        linear-gradient(135deg, rgba(8, 13, 35, 0.94), rgba(15, 23, 42, 0.88)),
+        radial-gradient(circle at 12% 10%, rgba(34, 211, 238, 0.18), transparent 26%),
+        radial-gradient(circle at 86% 0%, rgba(129, 140, 248, 0.2), transparent 32%);
+    border-color: rgba(103, 232, 249, 0.62);
+    box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.18) inset,
+        0 0 42px rgba(34, 211, 238, 0.24),
+        0 0 90px rgba(99, 102, 241, 0.18);
+}
+
+.hologram-panel::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-lg;
+    animation: hologram-border-flicker 2400ms steps(3, end) infinite;
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    box-shadow:
+        0 0 22px rgba(34, 211, 238, 0.28) inset,
+        0 0 28px rgba(34, 211, 238, 0.18);
+}
+
+.hologram-panel > :not(.hologram-scanline) {
+    @apply relative;
+    z-index: 1;
+}
+
+.hologram-scanline {
+    @apply pointer-events-none absolute inset-0 rounded-lg;
+    animation: hologram-scanline 5200ms linear infinite;
+    background:
+        linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.12), transparent),
+        repeating-linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.05) 0,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px,
+            transparent 7px
+    );
+    mix-blend-mode: screen;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hologram-close {
+    @apply absolute right-4 top-4 rounded border border-cyan-300/60 px-3 py-2 text-xs font-black tracking-[0.18em] text-cyan-100 transition focus:outline-none focus:ring-2 focus:ring-cyan-300;
+    background: rgba(8, 13, 35, 0.74);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.16);
+}
+
+.hologram-close:hover {
+    background: rgba(103, 232, 249, 0.15);
+}
+
+.hologram-title {
+    @apply text-cyan-50;
+    animation: hologram-title-glitch 3200ms steps(2, end) infinite;
+    text-shadow:
+        0 0 10px rgba(34, 211, 238, 0.75),
+        2px 0 0 rgba(236, 72, 153, 0.32),
+        -2px 0 0 rgba(34, 211, 238, 0.34);
+}
+
+.hologram-metric {
+    @apply rounded-md border border-cyan-300/30 p-3;
+    background: rgba(15, 23, 42, 0.66);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.1) inset;
+}
+
+.hologram-detail-section {
+    @apply relative pt-5;
+}
+
+.hologram-detail-section::before {
+    content: '';
+    @apply absolute left-0 top-0 h-px w-full;
+    background: linear-gradient(90deg, rgba(103, 232, 249, 0.3), rgba(103, 232, 249, 0.1), transparent);
+}
+
+.hologram-skill {
+    @apply rounded border border-cyan-300/30 px-2 py-1 text-sm font-bold text-cyan-50;
+    background: rgba(34, 211, 238, 0.1);
+}
+
+.holo-phone-frame {
+    @apply relative shrink-0 border border-cyan-200/50;
+    aspect-ratio: 9 / 19.5;
+    width: min(58vw, 220px);
+    border-radius: 34px;
+    padding: 14px;
+    background:
+        linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.95)),
+        linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(99, 102, 241, 0.16));
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.24) inset,
+        0 0 28px rgba(34, 211, 238, 0.22),
+        0 18px 50px rgba(0, 0, 0, 0.34);
+}
+
+.holo-phone-screen {
+    @apply relative h-full w-full overflow-hidden bg-slate-950;
+    border-radius: 24px;
+}
+
+.holo-phone-screen::after {
+    content: '';
+    @apply pointer-events-none absolute inset-0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 32%);
+}
+
+.holo-phone-speaker {
+    @apply absolute left-1/2 top-[8px] z-20 h-[5px] w-14 -translate-x-1/2 rounded-full bg-cyan-100/70;
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+}
+
+.contact-hologram {
+    @apply relative isolate overflow-hidden rounded-lg border px-5 py-8 text-slate-100 sm:px-8 lg:px-10;
+    animation: hologram-panel-in 420ms ease-out both;
+    background:
+        linear-gradient(135deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.82)),
+        radial-gradient(circle at 18% 18%, rgba(34, 211, 238, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 8%, rgba(129, 140, 248, 0.18), transparent 34%);
+    border-color: rgba(103, 232, 249, 0.5);
+    box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.14) inset,
+        0 0 42px rgba(34, 211, 238, 0.16),
+        0 24px 90px rgba(0, 0, 0, 0.34);
+}
+
+.contact-hologram::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-lg;
+    background:
+        linear-gradient(90deg, rgba(34, 211, 238, 0.18) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 86%);
+    opacity: 0.42;
+}
+
+.contact-hologram::after {
+    content: '';
+    @apply pointer-events-none absolute left-[-12%] right-[-12%] top-0 h-[2px];
+    animation: contact-data-sweep 5200ms linear infinite;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.85), rgba(168, 85, 247, 0.72), transparent);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.42);
+}
+
+.contact-scanline {
+    @apply pointer-events-none absolute inset-0 rounded-lg;
+    animation: hologram-scanline 6200ms linear infinite;
+    background:
+        linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.1), transparent),
+        repeating-linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.045) 0,
+            rgba(255, 255, 255, 0.045) 1px,
+            transparent 1px,
+            transparent 8px
+        );
+    mix-blend-mode: screen;
+    opacity: 0.18;
+}
+
+.contact-kicker {
+    @apply text-xs font-black uppercase tracking-[0.2em] text-cyan-200;
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.44);
+}
+
+.contact-title {
+    @apply mt-3 text-5xl font-black leading-none text-cyan-50 sm:text-4xl lg:text-7xl;
+    animation: hologram-title-glitch 3600ms steps(2, end) infinite;
+    text-shadow:
+        0 0 16px rgba(34, 211, 238, 0.74),
+        3px 0 0 rgba(236, 72, 153, 0.24),
+        -3px 0 0 rgba(34, 211, 238, 0.28);
+}
+
+.contact-copy {
+    @apply mt-5 max-w-xl text-base font-semibold leading-7 text-slate-200/90;
+}
+
+.contact-status-grid {
+    @apply mt-6 grid grid-cols-2 gap-2 text-[11px] font-black tracking-[0.16em] text-cyan-100/80;
+}
+
+.contact-status-grid span {
+    @apply rounded border border-cyan-300/25 px-3 py-2;
+    background: rgba(15, 23, 42, 0.58);
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.08) inset;
+}
+
+.contact-avatar-frame {
+    @apply relative overflow-hidden rounded-md border border-cyan-300/30 p-2;
+    background:
+        linear-gradient(145deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.86)),
+        radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.2), transparent 42%);
+    box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.12) inset,
+        0 0 28px rgba(34, 211, 238, 0.14);
+}
+
+.contact-avatar-frame::after {
+    content: '';
+    @apply pointer-events-none absolute inset-2 rounded-sm border border-cyan-100/20;
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.14) inset;
+}
+
+.contact-avatar-image {
+    @apply relative z-10 rounded-sm;
+    filter: saturate(0.92) contrast(1.08);
+}
+
+.contact-form-panel {
+    @apply relative w-full rounded-md border border-cyan-300/30 p-5 sm:p-6;
+    background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.88)),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.18), transparent 42%);
+    box-shadow:
+        0 0 0 1px rgba(34, 211, 238, 0.1) inset,
+        0 0 32px rgba(34, 211, 238, 0.12);
+}
+
+.contact-terminal-line {
+    @apply hidden rounded border border-cyan-300/25 px-3 py-2 text-[10px] font-black tracking-[0.16em] text-cyan-100/70 sm:block;
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.contact-field {
+    @apply mb-5;
+}
+
+.contact-label {
+    @apply mb-2 block text-xs font-black uppercase tracking-[0.18em] text-cyan-200;
+}
+
+.contact-input {
+    @apply w-full rounded border px-3 py-3 text-sm font-semibold text-cyan-50 outline-none transition placeholder:text-cyan-100/30;
+    background: rgba(2, 6, 23, 0.72);
+    border-color: rgba(103, 232, 249, 0.34);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.08) inset;
+}
+
+.contact-input:focus {
+    border-color: rgba(103, 232, 249, 0.86);
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.18),
+        0 0 22px rgba(34, 211, 238, 0.18),
+        0 0 18px rgba(34, 211, 238, 0.1) inset;
+}
+
+.contact-submit {
+    @apply mt-3 cursor-pointer rounded border px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-cyan-50 transition disabled:cursor-not-allowed disabled:opacity-60;
+    background:
+        linear-gradient(90deg, rgba(14, 116, 144, 0.84), rgba(79, 70, 229, 0.78)),
+        rgba(15, 23, 42, 0.9);
+    border-color: rgba(103, 232, 249, 0.58);
+    box-shadow:
+        0 0 18px rgba(34, 211, 238, 0.18),
+        0 0 18px rgba(34, 211, 238, 0.1) inset;
+}
+
+.contact-submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 28px rgba(34, 211, 238, 0.28),
+        0 0 22px rgba(129, 140, 248, 0.2) inset;
+}
+
+@keyframes hologram-panel-in {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+        filter: blur(7px);
+    }
+    64% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.005);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes hero-hint-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes hero-hint-pulse {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+@keyframes hero-hint-chevron {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+}
+
+@keyframes cyber-atmosphere-scan {
+    from {
+        background-position:
+            0 -120%,
+            0 0;
+    }
+    to {
+        background-position:
+            0 220%,
+            0 56px;
+    }
+}
+
+@keyframes cyber-atmosphere-sweep {
+    0%,
+    100% {
+        transform: translateY(-18vh) skewX(-18deg);
+        opacity: 0;
+    }
+    24% {
+        opacity: 0.72;
+    }
+    48% {
+        transform: translateY(64vh) skewX(-18deg);
+        opacity: 0;
+    }
+}
+
+@keyframes hologram-flicker {
+    0%,
+    12%,
+    19%,
+    100% {
+        opacity: 1;
+    }
+    8%,
+    16% {
+        opacity: 0.72;
+    }
+}
+
+@keyframes hologram-border-flicker {
+    0%,
+    100% {
+        opacity: 0.72;
+    }
+    52% {
+        opacity: 0.38;
+    }
+    56% {
+        opacity: 1;
+    }
+}
+
+@keyframes hologram-scanline {
+    from {
+        background-position:
+            0 -120%,
+            0 0;
+    }
+    to {
+        background-position:
+            0 220%,
+            0 48px;
+    }
+}
+
+@keyframes hologram-title-glitch {
+    0%,
+    88%,
+    100% {
+        transform: translateX(0);
+        text-shadow:
+            0 0 10px rgba(34, 211, 238, 0.75),
+            2px 0 0 rgba(236, 72, 153, 0.32),
+            -2px 0 0 rgba(34, 211, 238, 0.34);
+    }
+    90% {
+        transform: translateX(1px);
+        text-shadow:
+            0 0 12px rgba(34, 211, 238, 0.9),
+            5px 0 0 rgba(236, 72, 153, 0.38),
+            -4px 0 0 rgba(34, 211, 238, 0.5);
+    }
+    92% {
+        transform: translateX(-1px);
+    }
+}
+
+@keyframes contact-data-sweep {
+    from {
+        transform: translateY(-8px);
+    }
+    to {
+        transform: translateY(1180px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hologram-panel,
+    .hologram-panel::before,
+    .hologram-scanline,
+    .hologram-title,
+    .cyber-scene-atmosphere::before,
+    .cyber-scene-atmosphere::after,
+    .hero-monitor-hint,
+    .hero-monitor-hint__signal,
+    .hero-monitor-hint__chevron,
+    .contact-hologram,
+    .contact-hologram::after,
+    .contact-scanline,
+    .contact-title {
+        animation: none !important;
+    }
+}
