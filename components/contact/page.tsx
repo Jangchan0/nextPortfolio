@@ -72,69 +72,85 @@ function Contact() {
     return (
         <>
             <ToastContainer />
-            <div className="lg:flex md:flex sm:flex-row sm:item-center justify-center item-center bg-primary rounded-md py-10 cursor-default ">
-                <div className="contactImg lg:w-2/5 md:w-1/2 sm:w-full shadow-lg text-center">
-                    <h2 className="text-3xl font-bold sm:text-6xl justify-center flex my-9">Contact</h2>
-                    <p className="text-md font-bold sm:text-md justify-center my-9 ">thank you!</p>
-                    <div className="developerImg flex justify-center mb-6 transition-transform  hover:rotate-[-2deg]">
-                        <Image
-                            src={developerProfile}
-                            alt="developer profile"
-                            className="transition-transform hover:rotate-[-2deg]"
-                            width={350}
-                            height={350}
-                        />
-                    </div>
-                </div>
-                <div className="contactContants lg:w-3/5 md:w-1/2 sm:w-full flex">
-                    <div className="container mx-auto p-4 flex justify-center items-center">
-                        <form className="container max-w-md flex flex-col" ref={form} onSubmit={sendEmail}>
-                            <div className="mb-8">
-                                <label
-                                    htmlFor="name"
-                                    className="block text-gray-700 dark:text-gray-100 text-sm font-bold mb-2"
-                                >
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="user_name"
-                                    className="w-full border rounded p-2 bg-slate-200 dark:bg-slate-400"
-                                />
-                            </div>
-                            <div className="mb-8">
-                                <label
-                                    htmlFor="email"
-                                    className="block text-gray-700 dark:text-gray-100  text-sm font-bold mb-2"
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    name="user_email"
-                                    className="w-full border rounded p-2  bg-slate-200 dark:bg-slate-400"
-                                />
-                            </div>
-                            <div className="mb-8">
-                                <label
-                                    htmlFor="message"
-                                    className="block text-gray-700 dark:text-gray-100 text-sm font-bold mb-2"
-                                >
-                                    Message
-                                </label>
-                                <textarea
-                                    name="message"
-                                    className="w-full h-28 border rounded p-2  bg-slate-200 dark:bg-slate-400"
-                                    style={{ resize: 'none' }}
-                                />
-                            </div>
-                            <input
-                                className="bg-blue-500 text-white p-2 rounded mt-4  active:bg-blue-700 cursor-pointer"
-                                type="submit"
-                                value="Send"
-                                disabled={isSubmitting}
+            <div className="contact-hologram cursor-default">
+                <div className="contact-scanline" />
+                <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div className="contactImg text-center lg:text-left">
+                        <p className="contact-kicker">TRANSMISSION READY</p>
+                        <h2 className="contact-title">Contact</h2>
+                        <p className="contact-copy">
+                            프로젝트, 협업, 채용 관련 이야기를 남겨주세요. 확인 후 가능한 빠르게 답변드리겠습니다.
+                        </p>
+                        <div className="contact-status-grid" aria-hidden="true">
+                            <span>MAIL_LINK</span>
+                            <span>ONLINE</span>
+                            <span>RESPONSE</span>
+                            <span>READY</span>
+                        </div>
+                        <div className="developerImg contact-avatar-frame mx-auto mt-8 transition-transform hover:rotate-[-2deg] lg:mx-0">
+                            <Image
+                                src={developerProfile}
+                                alt="developer profile"
+                                className="contact-avatar-image transition-transform hover:rotate-[-2deg]"
+                                width={350}
+                                height={350}
                             />
-                        </form>
+                        </div>
+                    </div>
+                    <div className="contactContants flex">
+                        <div className="contact-form-panel">
+                            <div className="mb-8 flex items-center justify-between gap-4">
+                                <div>
+                                    <p className="contact-kicker mb-2">SECURE MESSAGE</p>
+                                    <h3 className="text-2xl font-black text-cyan-50">Send Signal</h3>
+                                </div>
+                                <span className="contact-terminal-line">ID: JCY-PORTFOLIO</span>
+                            </div>
+
+                            <form className="flex flex-col" ref={form} onSubmit={sendEmail}>
+                                <div className="contact-field">
+                                    <label htmlFor="name" className="contact-label">
+                                        Name
+                                    </label>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="user_name"
+                                        className="contact-input"
+                                        autoComplete="name"
+                                    />
+                                </div>
+                                <div className="contact-field">
+                                    <label htmlFor="email" className="contact-label">
+                                        Email
+                                    </label>
+                                    <input
+                                        id="email"
+                                        type="email"
+                                        name="user_email"
+                                        className="contact-input"
+                                        autoComplete="email"
+                                    />
+                                </div>
+                                <div className="contact-field">
+                                    <label htmlFor="message" className="contact-label">
+                                        Message
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        className="contact-input h-32"
+                                        style={{ resize: 'none' }}
+                                    />
+                                </div>
+                                <input
+                                    className="contact-submit"
+                                    type="submit"
+                                    value={isSubmitting ? 'Sending...' : 'Send'}
+                                    disabled={isSubmitting}
+                                />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
