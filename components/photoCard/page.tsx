@@ -83,7 +83,7 @@ class PhotoCard extends Component {
                 >
                     <h3 className="w-full text-center mb-5 text-2xl italic font-bold cursor-default">↓ Hover me!</h3>
                     <div
-                        className={`overlay  absolute w-full h-full bg-gradient-custom bg-cover bg-center filter brightness-110 opacity-40 mix-blend-color-dodge rounded-2xl  ${
+                        className={`photo-card-visual overlay absolute h-full w-full bg-gradient-custom bg-cover bg-center opacity-40 mix-blend-color-dodge brightness-110 filter ${
                             isMouseOver ? '' : 'transition-all'
                         }`}
                         style={{
@@ -95,7 +95,7 @@ class PhotoCard extends Component {
                         }}
                     ></div>
                     <Image
-                        className={`bg-cover w-full h-full shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
+                        className={`photo-card-visual h-full w-full bg-cover shadow-xl ${isMouseOver ? '' : 'transition-all'}`}
                         src={photoCard}
                         alt="장찬영 소개 카드"
                         style={{

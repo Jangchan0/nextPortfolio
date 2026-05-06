@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head>
                 <meta name="google-site-verification" content="ZMF0vs0F6dFUUAi0nRdsgvFhJvPF-ZW_HZxQToZmLhE" />
                 <link rel="icon" href="/favicon.ico" sizes="any" />

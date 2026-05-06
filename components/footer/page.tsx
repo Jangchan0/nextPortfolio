@@ -16,7 +16,7 @@ export default function Footer() {
                             <span className="ml-3 lg:text-xl md:text-lg sm:text-xs">장찬영 포트폴리오</span>
                         </Link>
                         <p className="lg:text-sm md:text-sm sm:text-xs text-gray-500 sm:ml-6 sm:mt-0 mt-4">
-                            © 2024 Frontend —
+                            © 2026 Frontend —
                             <a
                                 href="https://github.com/Jangchan0"
                                 rel="noopener noreferrer"
