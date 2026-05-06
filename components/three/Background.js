@@ -16,6 +16,7 @@ const SCREEN_TARGETS = [
     'Screen B.002_107',
     'Screen C.002_106',
     'Screen D.001_105',
+    'Screen A.001_104',
 ];
 
 const SCREEN_PROJECT_SLUGS = [
@@ -27,6 +28,7 @@ const SCREEN_PROJECT_SLUGS = [
     'roubit-fastlane-release',
     'loody-hardware-otp-sse',
     'loody-zero-to-one',
+    'roubit-theme-customizing',
 ];
 
 const SCREEN_OVERLAY_CONFIG = {
