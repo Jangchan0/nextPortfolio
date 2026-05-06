@@ -24,3 +24,8 @@
         transparent 80%
     );
 }
+
+.photo-card-visual {
+    border-radius: 18px;
+    clip-path: inset(0 round 18px);
+}
