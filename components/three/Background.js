@@ -94,7 +94,9 @@ const getObjectByLooseName = (model, objectName) => {
 };
 
 const isInteractiveDomTarget = (target) =>
-    target?.closest?.('a, button, input, textarea, select, label, [role="dialog"], .hologram-backdrop, .hologram-panel');
+    target?.closest?.(
+        'a, button, input, textarea, select, label, [role="dialog"], .hologram-backdrop, .hologram-panel, [data-block-three-interactions="true"]',
+    );
 
 const drawText = (context, text, x, y, maxWidth, lineHeight) => {
     const tokens = text.split(' ');

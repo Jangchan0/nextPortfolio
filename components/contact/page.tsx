@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import type { SyntheticEvent } from 'react';
 
 type EmailJSError = {
     status?: number;
@@ -15,6 +16,10 @@ type EmailJSError = {
 
 function isEmailJSError(error: unknown): error is EmailJSError {
     return typeof error === 'object' && error !== null && ('status' in error || 'text' in error);
+}
+
+function stopEventPropagation(event: SyntheticEvent) {
+    event.stopPropagation();
 }
 
 function Contact() {
@@ -116,7 +121,13 @@ function Contact() {
     return (
         <>
             <ToastContainer />
-            <div className="contact-hologram cursor-default">
+            <div
+                className="contact-hologram cursor-default"
+                data-block-three-interactions="true"
+                onClickCapture={stopEventPropagation}
+                onMouseDownCapture={stopEventPropagation}
+                onPointerDownCapture={stopEventPropagation}
+            >
                 <div className="contact-scanline" />
                 <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                     <div className="contactImg text-center lg:text-left">
