@@ -8,11 +8,23 @@ import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+type EmailJSError = {
+    status?: number;
+    text?: string;
+};
+
+function isEmailJSError(error: unknown): error is EmailJSError {
+    return typeof error === 'object' && error !== null && ('status' in error || 'text' in error);
+}
+
 function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { theme } = useTheme();
 
     const form = useRef<HTMLFormElement | null>(null);
+    const emailServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const emailTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const emailPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -36,14 +48,30 @@ function Contact() {
                 return;
             }
 
+            if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
+                console.error('EmailJS config is missing.', {
+                    hasServiceId: Boolean(emailServiceId),
+                    hasTemplateId: Boolean(emailTemplateId),
+                    hasPublicKey: Boolean(emailPublicKey),
+                });
+
+                toast.error('메일 설정이 누락되었습니다. 환경변수를 확인해주세요.', {
+                    position: toast.POSITION.TOP_CENTER,
+                    icon: '⚠️',
+                    hideProgressBar: true,
+                    className: 'toast-message',
+                });
+                return;
+            }
+
             try {
                 setIsSubmitting(true);
 
                 await emailjs.sendForm(
-                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+                    emailServiceId,
+                    emailTemplateId,
                     form.current,
-                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+                    emailPublicKey
                 );
 
                 form.current?.reset();
@@ -55,7 +83,23 @@ function Contact() {
                     className: 'toast-message',
                 });
             } catch (error) {
-                toast.error('메일 전송에 실패하였습니다. ', {
+                console.error('EmailJS send failed.', error);
+
+                let errorMessage = '메일 전송에 실패하였습니다.';
+
+                if (isEmailJSError(error)) {
+                    if (error.status === 403) {
+                        errorMessage = 'EmailJS 요청이 차단되었습니다. 서비스, 템플릿, 공개 키 설정을 확인해주세요.';
+                    } else if (error.status === 429) {
+                        errorMessage = '잠시 후 다시 시도해주세요. 짧은 시간에 너무 많은 요청이 발생했습니다.';
+                    } else if (error.status === 451) {
+                        errorMessage = '현재 실행 환경에서는 EmailJS 요청이 차단되었습니다.';
+                    } else if (error.text) {
+                        errorMessage = `메일 전송에 실패하였습니다. (${error.status}: ${error.text})`;
+                    }
+                }
+
+                toast.error(errorMessage, {
                     position: toast.POSITION.TOP_CENTER,
                     icon: '🥲',
                     hideProgressBar: true,
